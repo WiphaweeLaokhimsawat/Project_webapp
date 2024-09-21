@@ -1,0 +1,89 @@
+/* General Container */
+.about-container {
+    background-image: url('https://cdn.builder.io/api/v1/image/assets/TEMP/73e3e4e2161bef832c15feace46c9bf2331bd996fc578ef78604fbb928d7cc6d?placeholderIfAbsent=true&apiKey=7aefd214296441c28ddce98b0512bc42');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  /* Navigation Bar */
+  .navbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+  
+  .nav-logo {
+    font-size: 1.8rem;
+    color: #ffcc00;
+    font-weight: bold;
+  }
+  
+  .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 50px;
+  }
+  
+  
+  .nav-links li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+  }
+  
+  .nav-links li a:hover,
+  .nav-links li a:active {
+    color: #ffcc00;
+  }
+  
+  /* Chef Tag */
+  .chef-tag {
+    background-color: #ffcc00;
+    padding: 10px;
+    border-radius: 5px;
+  }
+  
+  .chef-tag span {
+    font-size: 1.2rem;
+    color: #000;
+    font-weight: bold;
+  }
+  
+  /* Main Content */
+  .dpt-content {
+    background-color: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    text-align: center;
+    max-width: 600px;
+    margin-top: 100px; /* Push content below nav */
+  }
+  
+  h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+  }
+  
+  .highlight {
+    color: #ffcc00;
+  }
+  
+  p {
+    font-size: 1.2rem;
+    line-height: 1.5;
+    margin-bottom: 30px;
+  }
+  
