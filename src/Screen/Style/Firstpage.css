@@ -1,0 +1,103 @@
+/* General page styling */
+.page {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    width: 100%;
+    background-image: url('https://cdn.builder.io/api/v1/image/assets/TEMP/73e3e4e2161bef832c15feace46c9bf2331bd996fc578ef78604fbb928d7cc6d?placeholderIfAbsent=true&apiKey=7aefd214296441c28ddce98b0512bc42');
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+  }
+  
+  /* Navbar styles */
+  .navbar {
+    position: fixed; /* ติด navbar ไว้ด้านบน */
+    top: 100px; /* ชิดขอบบน */
+    background-color: #000;
+    width: 100%;
+    z-index: 1000; /* อยู่เหนือองค์ประกอบอื่นๆ */
+  }
+  
+  .navbar-content {
+    gap: 20px;
+  display: flex;
+  align-items: center; /* จัดแนวตั้งให้ content อยู่ตรงกลาง */
+  justify-content: center;
+  padding: 10px 20px;
+  }
+  
+  .logo-column {
+    flex: 1;
+  }
+  
+  .logo {
+    color: #fff;
+    font: 600 48px Inter, sans-serif;
+  }
+  
+  @media (max-width: 991px) {
+    .logo {
+      margin-top: 10px; /* ลดระยะห่างของโลโก้ */
+      font-size: 40px;
+    }
+  }
+  
+  .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 45px;
+    padding: 10px 25px; /* ลด padding เพื่อลดระยะห่าง */
+    margin-right: 40px;
+  }
+  
+  .nav-link a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 25px;
+  }
+  
+  /* Welcome Section styles */
+  .welcome-section {
+    margin-top: 130px;
+  }
+  
+  .welcome-text {
+    font-size: 120px;
+    margin-left: -300px;
+  }
+  
+  .restaurant-name {
+    font-size: 98px;
+    color: #d0671b;
+    margin-right: -300px;
+    padding-left: 100px;
+  }
+  
+  .login-button {
+    display: inline-block;
+    background-color: #ff804a;
+    color: #fff;
+    padding: 15px 40px;
+    font-size: 50px;
+    border: 10px;
+    border-radius: 40px;
+    margin-top: 40px;
+    cursor: pointer;
+  }
+  
+  .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+  

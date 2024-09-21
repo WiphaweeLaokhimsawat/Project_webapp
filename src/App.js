@@ -1,7 +1,8 @@
 
+
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-
+import Menupage from './Screen/Menupage';
 import FirstPage from'./screen/FirstPage';
 import Login from './screen/LoginPage';
 import Register from './screen/RegisterPage';
@@ -12,11 +13,14 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
+
         <Route index element={<FirstPage/>}/>
         <Route path="login" element={<Login/>} />
         <Route path="register" element={<Register/>}/>
         <Route path="home" element={<Home/>}/>
         <Route path="about" element={<About/>}/>
+        <Route path="menupage" element={<Menupage/>}/>
+
       </Routes>
     </BrowserRouter>
   );
