@@ -1,130 +1,129 @@
 /* firstpage.css */
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f4f4f4;
-    line-height: 1.6; /* เป็นการกำหนดความสูงของบรรทัด เพื่อควบคุมระยะห่างระหว่างบรรทัดของข้อความที่แสดงในเอกสาร*/
-    background-image: url('https://cdn.builder.io/api/v1/image/assets/TEMP/73e3e4e2161bef832c15feace46c9bf2331bd996fc578ef78604fbb928d7cc6d?placeholderIfAbsent=true&apiKey=7aefd214296441c28ddce98b0512bc42');
-    background-size: cover;
-    background-position: center;
-  }
-  
-  /* Header Styles */
-  .header {
-    width: 100%;
-    height: 100vh;
-    position: relative;
-    overflow: hidden;
-  }
-  
-  /* Overlay for Dark Effect */
-  .overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 115%;
-    background: rgba(0, 0, 0, 0.6);
-    z-index: 1; /*เพื่อกำหนดลำดับการเรียงซ้อน องค์ประกอบนี้จะถูกแสดงทับองค์ประกอบที่มีค่า z-index ต่ำกว่า*/
-  }
-  
-  /* Navigation Bar */
-  .headerContent {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-    position: relative;
-    z-index: 2;
-    background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent background */
-  }
-     
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-  
-  .logoColumn .logo {
-    color: white;
-    font-size: 24px;
-    font-weight: bold;
-  }
-  
-  .navColumn .nav {
-    display: flex;
-    list-style: none;
-  }
-  .nav li a:hover {
-    color: #ffcc00;
-  }
-  .navItem a {
-    color: white;
-    text-decoration: none;
-    margin: 0 15px;
-    font-size: 18px;
-    transition: color 0.3s ease;
-  }
-  
-  .navItem a:hover {
-    color: #f39c12;
-  }
-  
-  /* Hero Section */
-  .heroSection {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 80%;
-    position: relative;
-    z-index: 2;
-    color: white;
-    background-size: cover;
-    background-position: center;
-  }
-  
-  .heroContent {
-    text-align: center;
-    z-index: 3;
-  }
-  
-  .welcomeText {
-    font-size: 48px;
-    margin-bottom: 10px;
-  }
-  
-  .restaurantName {
-    font-size: 48px;
-    font-weight: bold;
-    margin-bottom: 20px;
-    color: #d35400;
-  }
-  
-  .loginButton {
-    padding: 15px 30px;
-    background-color: #f39c12;
-    color: white;
-    border: none;
-    border-radius: 2px;
-    font-size: 25px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .loginButton:hover {
-    background-color: #D0671B;
-  }
-  
-  .srOnly {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    border: 0;
-  }
-  
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f4f4;
+  line-height: 1.6; /* เป็นการกำหนดความสูงของบรรทัด เพื่อควบคุมระยะห่างระหว่างบรรทัดของข้อความที่แสดงในเอกสาร*/
+  background-image: url('https://cdn.builder.io/api/v1/image/assets/TEMP/73e3e4e2161bef832c15feace46c9bf2331bd996fc578ef78604fbb928d7cc6d?placeholderIfAbsent=true&apiKey=7aefd214296441c28ddce98b0512bc42');
+  background-size: cover;
+  background-position: center;
+}
+
+/* Header Styles */
+.header {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Overlay for Dark Effect */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 115%;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 1; /*เพื่อกำหนดลำดับการเรียงซ้อน องค์ประกอบนี้จะถูกแสดงทับองค์ประกอบที่มีค่า z-index ต่ำกว่า*/
+}
+
+/* Navigation Bar */
+.headerContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  position: relative;
+  z-index: 2;
+  background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent background */
+}
+   
+
+
+.logoColumn .logo {
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.navColumn .nav {
+  display: flex;
+  list-style: none;
+}
+.nav li a:hover {
+  color: #ffcc00;
+}
+.navItem a {
+  color: white;
+  text-decoration: none;
+  margin: 0 15px;
+  font-size: 18px;
+  transition: color 0.3s ease;
+}
+
+.navItem a:hover {
+  color: #f39c12;
+}
+
+/* Hero Section */
+.heroSection {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80%;
+  position: relative;
+  z-index: 2;
+  color: white;
+  background-size: cover;
+  background-position: center;
+}
+
+.heroContent {
+  text-align: center;
+  z-index: 3;
+}
+
+.welcomeText {
+  font-size: 48px;
+  margin-bottom: 10px;
+}
+
+.restaurantName {
+  font-size: 48px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #d35400;
+}
+
+.loginButton {
+  padding: 15px 30px;
+  background-color: #f39c12;
+  color: white;
+  border: none;
+  border-radius: 2px;
+  font-size: 25px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.loginButton:hover {
+  background-color: #D0671B;
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}

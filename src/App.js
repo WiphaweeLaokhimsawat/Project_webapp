@@ -2,7 +2,7 @@
 
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Menupage from './Screen/Menupage';
+import Menupage from './screen/Menupage';
 import FirstPage from'./screen/FirstPage';
 import Login from './screen/LoginPage';
 import Register from './screen/RegisterPage';
