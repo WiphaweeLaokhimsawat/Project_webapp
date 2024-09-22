@@ -1,7 +1,8 @@
 import React from "react";
-import './Style/ChefPage.css'; // รวมไฟล์ CSS ไว้ในไฟล์เดียว
+import './Style/ChefPage.css'; // Import the combined CSS
 
-// ข้อมูลเชฟที่ใช้ในหน้า
+
+// Chef data
 const chefData = [
   {
     image: "https://cdn.builder.io/api/v1/image/assets/TEMP/eb997ed42105761aa0ba0cf7c0ca78ef204234498e04ceb3a828e8bc281ee113?placeholderIfAbsent=true&apiKey=481b691d389644fcbe1d378101c13fd3",
@@ -17,7 +18,7 @@ const chefData = [
   }
 ];
 
-// คอมโพเนนต์แสดงข้อมูลเชฟแต่ละคน
+// ChefCard Component
 function ChefCard({ image, description }) {
   return (
     <article className="chefCard">
@@ -27,7 +28,7 @@ function ChefCard({ image, description }) {
   );
 }
 
-// คอมโพเนนต์ Header
+// Header Component with highlighted name
 function Header() {
   return (
     <header className="header">
@@ -45,7 +46,7 @@ function Header() {
   );
 }
 
-// คอมโพเนนต์ ChefPage หลัก
+// Main ChefPage Component
 function Chefpage() {
   return (
     <main className="chefPage">

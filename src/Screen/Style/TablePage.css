@@ -1,0 +1,119 @@
+/* General Styles */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #333; /* Background color ตามภาพ */
+    color: white;
+  }
+  
+  .TablePage {
+    text-align: center;
+  }
+  
+  /* Navbar Styles */
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #000; /* สีของ Navbar เป็นสีดำ */
+    padding: 20px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+  }
+  
+  .logo {
+    font-size: 24px;
+    color: #fff; /* สีโลโก้สีขาว */
+  }
+  
+  .navLinks {
+    list-style-type: none;
+    display: flex;
+    gap: 20px;
+  }
+  
+  .navLinks li a {
+    color: #ddd;
+    text-decoration: none;
+    font-size: 18px;
+  }
+  
+  .navLinks li a:hover,
+  .navLinks li a.active {
+    color: #ffa500; /* เปลี่ยนสีเมื่อ hover หรือ active */
+  }
+  
+  .accountButton {
+    background-color: transparent;
+    color: #ffa500;
+    border: 2px solid #ffa500;
+    padding: 5px 15px; /* ปรับขนาด padding ให้ตรงกับภาพ */
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 14px; /* ขนาดฟอนต์เล็กลงตามภาพ */
+  }
+  
+  /* Table Reservation Section */
+  .table-reservation {
+    margin-top: 150px; /* เพิ่ม margin-top เพื่อเว้นช่องว่างจากแถบด้านบน */
+    text-align: center;
+  }
+  
+  .table-reservation h2 {
+    margin-bottom: 40px; /* เพิ่มระยะห่างจากหัวเรื่อง */
+    font-size: 32px;
+    color: #fff; /* สีขาวตามภาพ */
+  }
+  
+  /* Table Grid Styles */
+  .table-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    justify-content: center;
+  }
+  
+  /* Table Button Styles */
+  .tableButton {
+    background-color: #ff9900; /* ปุ่มสีส้ม */
+    color: white;
+    border: none;
+    padding: 20px 30px; /* ขนาด padding ใหญ่ขึ้นเพื่อให้ปุ่มใหญ่ตามภาพ */
+    font-size: 16px; /* ปรับขนาดฟอนต์ให้ตรงกับปุ่มในภาพ */
+    cursor: pointer;
+    border-radius: 10px; /* มุมมน */
+    transition: background-color 0.3s ease;
+  }
+  
+  .tableButton:hover {
+    background-color: #ff7700; /* เปลี่ยนสีเมื่อ hover */
+  }
+  
+  /* VIP Button Styles */
+  .tableButton:nth-last-child(2),
+  .tableButton:last-child {
+    grid-column: span 2; /* ปรับปุ่ม VIP ให้ขยายข้ามสองคอลัมน์ */
+    padding: 20px 60px; /* ขนาดของปุ่ม VIP ใหญ่ขึ้นตามภาพ */
+  }
+  
+  /* Responsive Adjustments */
+  @media (max-width: 768px) {
+    .table-grid {
+      grid-template-columns: repeat(2, 1fr); /* ปรับเป็น 2 คอลัมน์ในหน้าจอเล็ก */
+      gap: 15px;
+    }
+  
+    .tableButton {
+      padding: 15px 25px; /* ลดขนาด padding ในหน้าจอเล็ก */
+      font-size: 14px;
+    }
+  
+    .tableButton:nth-last-child(2),
+    .tableButton:last-child {
+      grid-column: span 2;
+      padding: 15px 50px; /* ลดขนาดปุ่ม VIP ในหน้าจอเล็ก */
+    }
+  }
+  

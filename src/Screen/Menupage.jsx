@@ -1,6 +1,7 @@
 import React from 'react';
 import './Style/Menupage.css';
 
+
 const Menupage = () => {
   return (
     <div className="menu-container">
