@@ -21,9 +21,9 @@ const chefData = [
 // ChefCard Component
 function ChefCard({ image, description }) {
   return (
-    <article className="chefCard">
-      <img src={image} alt="Chef portrait" className="chefImage" />
-      <p className="chefDescription">{description}</p>
+    <article className="chefCard-chef">
+      <img src={image} alt="Chef portrait-chef" className="chefImage-chef" />
+      <p className="chefDescription-chef">{description}</p>
     </article>
   );
 }
@@ -31,14 +31,14 @@ function ChefCard({ image, description }) {
 // Header Component with highlighted name
 function Header() {
   return (
-    <header className="header">
-      <nav className="navbar">
-        <h1 className="logo">DPT Restaurant</h1>
-        <ul className="navLinks">
+    <header className="header-chef">
+      <nav className="navbar-chef">
+        <h1 className="logo-chef">DPT Restaurant</h1>
+        <ul className="navLinks-chef">
           <li><a href="#home">Home</a></li>
           <li><a href="#about">About</a></li>
           <li><a href="#menu">Recommended Menu</a></li>
-          <li><a href="#chef" className="active">Chef</a></li>
+          <li><a href="#chef" className="active-chef">Chef</a></li>
           <li><a href="#booking">Table booking</a></li>
         </ul>
       </nav>
@@ -49,9 +49,9 @@ function Header() {
 // Main ChefPage Component
 function Chefpage() {
   return (
-    <main className="chefPage">
+    <main className="chefPage-chef">
       <Header />
-      <section className="chefGrid">
+      <section className="chefGrid-chef">
         {chefData.map((chef, index) => (
           <ChefCard key={index} image={chef.image} description={chef.description} />
         ))}

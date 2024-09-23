@@ -1,5 +1,5 @@
 /* Header Styles */
-.header {
+.header-chef {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -9,7 +9,7 @@
   margin-bottom: 0;
 }
 
-.navbar {
+.navbar-chef {
   display: flex; 
   justify-content: space-between;
   align-items: center;
@@ -22,25 +22,25 @@
   z-index: 1000;
 }
 
-.logo {
+.logo-chef {
   font-size: 24px;
   color: #fff; /* Logo text white */
 }
 
-.navLinks {
+.navLinks-chef {
   list-style-type: none;
   display: flex;
   gap: 20px;
 }
 
-.navLinks li a {
+.navLinks-chef li a {
   color: #ddd;
   text-decoration: none;
   font-size: 18px;
 }
 
-.navLinks li a:hover,
-.navLinks li a.active {
+.navLinks-chef li a:hover,
+.navLinks-chef li a.active {
   color: white;
 }
 
@@ -62,7 +62,7 @@
 }
 
 /* Chef Page Styles */
-.chefPage {
+.chefPage-chef {
   padding: 0;
   background-color: #333;
   min-height: 100vh;
@@ -74,7 +74,7 @@
 }
 
 /* Chef Grid Layout */
-.chefGrid {
+.chefGrid-chef {
   display: grid;
   grid-template-columns: repeat(3, 1fr); 
   gap: 20px;
@@ -83,11 +83,11 @@
   justify-content: center;
   margin-top: 0; /* เอาช่องว่างด้านบนออกให้หมด */
   position: relative; 
-  top: -500px; /* ขยับขึ้นไปให้ใกล้กับเมนูบาร์ แต่ไม่ติด */
+  top: 110px; /* ขยับขึ้นไปให้ใกล้กับเมนูบาร์ แต่ไม่ติด */
 }
 
 /* Chef Card Styles */
-.chefCard {
+.chefCard-chef {
   background-color: white;
   border-radius: 10px;
   overflow: hidden;
@@ -97,7 +97,7 @@
   margin-top: 0;
 }
 
-.chefImage {
+.chefImage-chef {
   width: 100%;
   height: auto;
   border-radius: 0;
@@ -106,7 +106,7 @@
   margin-top: 0;
 }
 
-.chefDescription {
+.chefDescription-chef {
   font-size: 16px;
   color: #333;
   padding: 10px;
