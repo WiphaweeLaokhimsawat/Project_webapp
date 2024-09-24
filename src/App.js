@@ -2,14 +2,14 @@
 
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Menupage from './screen/Menupage';
-import FirstPage from'./screen/FirstPage';
-import Login from './screen/LoginPage';
-import Register from './screen/RegisterPage';
-import Home from './screen/HomePage';
-import About from './screen/AboutPage';
-import TablePage from './screen/TablePage';
-import Chefpage from './screen/Chefpage';
+import Menupage from './Screen/Menupage';
+import FirstPage from'./Screen/FirstPage';
+import Login from './Screen/LoginPage';
+import Register from './Screen/RegisterPage';
+import Home from './Screen/HomePage';
+import About from './Screen/AboutPage';
+import TablePage from './Screen/TablePage';
+import Chefpage from './Screen/Chefpage';
 function App() {
   return (
     <BrowserRouter>
@@ -23,6 +23,7 @@ function App() {
         <Route path="menupage" element={<Menupage/>}/>
         <Route path="tablepage" element={<TablePage/>}/>
         <Route path="chefpage" element={<Chefpage/>}/>
+        <Route path="firstpage" element={<FirstPage/>}/>
 
       </Routes>
     </BrowserRouter>

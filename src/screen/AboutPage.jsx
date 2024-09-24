@@ -15,15 +15,16 @@ const DPTRestaurant = () => {
                 <div className="nav-logo">DPT Restaurant</div>
 
                 <ul className="nav-links">
-                    <li className="navItem"><a href="#home" onClick={() => handleNavClick('/home')}>Home</a></li>
-                    <li className="navItem"><a href="#about" className="active" onClick={() => handleNavClick('/about')}>About</a></li>
-                    <li className="navItem"><a href="#menu">Recommended Menu</a></li>
-                    <li className="navItem"><a href="#chef">Chef</a></li>
-                    <li className="navItem"><a href="#table-booking">Table Booking</a></li>
+                    <li className="navItem"><a href="#firstpage" onClick={() => handleNavClick('/firstpage')}>Home</a></li>
+                    <li className="navItem"><a href="#about" className='active' onClick={() => handleNavClick('/about')}>About</a></li>
+                    <li className="navItem"><a href="#menu" onClick={() => handleNavClick('/menupage')}>Recommended Menu</a></li>
+                    <li className="navItem"><a href="#chef" onClick={() => handleNavClick('/chefpage')}>Chef</a></li>
+                    <li className="navItem"><a href="#booking"  onClick={() => handleNavClick('/tablepage')}>Table Booking</a></li>
                 </ul>
                 {/* <div className="chef-tag">
                     <span>Ruijkorn Imtrakun</span>
                 </div> */}
+                <button className="about-tag">Rujikorn Iimtrakul</button>
             </nav>
 
             <div className="dpt-content">

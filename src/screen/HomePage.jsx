@@ -2,38 +2,28 @@ import React from 'react';
 import './Style/homepage.css';
 import { useNavigate } from 'react-router-dom';
 
-function  HomePage () {
+function HomePage() {
     const username = "Rujikorn Limtrakul"; // Example username
-    const navigate = useNavigate(); 
+    const navigate = useNavigate();
 
     const handleNavClick = (path) => {
         navigate(path); // Navigate to the given path
     };
     return (
-        <header className="header">
+        <header className="home-header">
             {/* Navigation Bar */}
-            <div className="headerContent">
-                <div className="logoColumn">
+             <div className="headerContent">
+                {/*<div className="logoColumn">
                     <h1 className="logo">DPT Restaurant</h1>
-                </div>
-                <nav className="navColumn">
-                    {/* <div className="nav-logo">DPT Restaurant</div> */}
-                    <ul className="nav">
-                        <li className="navItem">
-                            <a href="#home" className="active" onClick={() => handleNavClick('/home')}>Home</a>
-                        </li>
-                        <li className="navItem">
-                            <a href="#about" onClick={() => handleNavClick('/about')} >About</a>
-                        </li>
-                        <li className="navItem">
-                            <a href="#menu">Recommended Menu</a>
-                        </li>
-                        <li className="navItem">
-                            <a href="#chef">Chef</a>
-                        </li>
-                        <li className="navItem">
-                            <a href="#booking">Table booking</a>
-                        </li>
+                </div> */}
+                <nav className="navbar-home">
+                    <div className="logo-home">DPT Restaurant</div>
+                    <ul className="navlink-home">
+                        <li className="navItem"><a href="#firstpage" className='active' onClick={() => handleNavClick('/firstpage')}>Home</a></li>
+                        <li className="navItem"><a href="#about"  onClick={() => handleNavClick('/about')}>About</a></li>
+                        <li className="navItem"><a href="#menu" onClick={() => handleNavClick('/menupage')}>Recommended Menu</a></li>
+                        <li className="navItem"><a href="#chef" onClick={() => handleNavClick('/chefpage')}>Chef</a></li>
+                        <li className="navItem"><a href="#booking" onClick={() => handleNavClick('/tablepage')}>Table Booking</a></li>
                     </ul>
                 </nav>
                 {/* <div className="userColumn">
@@ -48,7 +38,7 @@ function  HomePage () {
                 <div className="heroContent">
                     <h2 className="welcomeText">Welcome to</h2>
                     <p className="restaurantName">DPT Restaurant</p>
-                    <button className="booking-button" >
+                    <button className="booking-button" onClick={() => handleNavClick('/tablepage')}>
                         Booking
                         <span className="srOnly">Access your account</span>
                     </button>

@@ -1,6 +1,6 @@
 import React from "react";
 import './Style/ChefPage.css'; // Import the combined CSS
-
+import { useNavigate } from 'react-router-dom';
 
 // Chef data
 const chefData = [
@@ -30,17 +30,25 @@ function ChefCard({ image, description }) {
 
 // Header Component with highlighted name
 function Header() {
+  const navigate = useNavigate(); // Initialize the navigate hook
+
+  const handleNavClick = (path) => {
+    navigate(path); // Navigate to the given path
+  };
   return (
     <header className="header-chef">
       <nav className="navbar-chef">
-        <h1 className="logo-chef">DPT Restaurant</h1>
+        <div className="logo-chef">DPT Restaurant</div>
+        {/* <h1 className="logo-chef">DPT Restaurant</h1> */}
         <ul className="navLinks-chef">
-          <li><a href="#home">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#menu">Recommended Menu</a></li>
-          <li><a href="#chef" className="active-chef">Chef</a></li>
-          <li><a href="#booking">Table booking</a></li>
+
+          <li className="navItem"><a href="#firstpage" onClick={() => handleNavClick('/firstpage')}>Home</a></li>
+          <li className="navItem"><a href="#about" onClick={() => handleNavClick('/about')}>About</a></li>
+          <li className="navItem"><a href="#menu" onClick={() => handleNavClick('/menupage')}>Recommended Menu</a></li>
+          <li className="navItem"><a href="#chef" className='active' onClick={() => handleNavClick('/chefpage')}>Chef</a></li>
+          <li className="navItem"><a href="#booking" onClick={() => handleNavClick('/tablepage')}>Table Booking</a></li>
         </ul>
+        <button className="chef-tag">Rujikorn Iimtrakul</button>
       </nav>
     </header>
   );
