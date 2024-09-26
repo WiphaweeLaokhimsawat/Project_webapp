@@ -10,6 +10,8 @@ import Home from './Screen/HomePage';
 import About from './Screen/AboutPage';
 import TablePage from './Screen/TablePage';
 import Chefpage from './Screen/Chefpage';
+import SetT from './Screen/SetTime';
+
 function App() {
   return (
     <BrowserRouter>
@@ -24,6 +26,7 @@ function App() {
         <Route path="tablepage" element={<TablePage/>}/>
         <Route path="chefpage" element={<Chefpage/>}/>
         <Route path="firstpage" element={<FirstPage/>}/>
+        <Route path="settime" element={<SetT/>}/>
 
       </Routes>
     </BrowserRouter>

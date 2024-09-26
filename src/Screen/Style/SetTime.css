@@ -1,0 +1,112 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #333;
+    /* Background color ตามภาพ */
+    color: white;
+}
+
+.SetT-Page {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+   
+    
+
+}
+
+.SetT-box {
+    width: 1000px;             /* กำหนดความกว้างของกล่อง */
+    height: 600px;            /* กำหนดความสูงของกล่อง */
+    background-color: #000000; /* สีพื้นหลัง */
+    border-radius: 50px;      /* ทำให้ขอบกลม */
+    padding: 20px;            /* ระยะห่างภายในกล่อง */
+    margin-top: 200px;
+}
+
+
+.SetT-box-in-box{
+    width: 980px;             /* กำหนดความกว้างของกล่อง */
+    height: 400px;            /* กำหนดความสูงของกล่อง */
+    background-color: #000000; /* สีพื้นหลัง */
+    border-radius: 50px;      /* ทำให้ขอบกลม */
+    padding: 10px;            /* ระยะห่างภายในกล่อง */
+
+}
+
+
+.SetT-reservation1 {
+    font-size: 40px;
+}
+
+  .SetT-reservation2 {
+    font-size: 40px;
+    text-align: left;
+}
+
+.SetT-box-input{
+    width: 200px;   
+    height: 50px;            
+    background-color: #FFAD61;
+    border-radius: 50px;      
+    padding: 10px;
+    margin-bottom: 3%;            
+
+}
+
+.SetT-box-date{
+    width: 300px;   
+    height: 50px;            
+    background-color: #FFAD61;
+    border-radius: 50px;      
+    padding: 10px;
+    margin-bottom: 3%;            
+
+}
+
+.SetT-box-time{
+    width: 300px;   
+    height: 50px;            
+    background-color: #FFAD61;
+    border-radius: 50px;      
+    padding: 10px;
+    margin-bottom: 3%;            
+
+}
+
+.SetT-box-PH{
+    width: 300px;   
+    height: 50px;            
+    background-color: #FFAD61;
+    border-radius: 50px;      
+    padding: 10px;
+    margin-bottom: 3%;            
+
+}
+
+.SetT-box-input-container {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* ระยะห่างระหว่าง Name และ Input สามารถปรับค่าได้ */
+}
+
+
+.SetT-box-submit{
+    width: 200px;   
+    height: 50px;            
+    background-color: #FD8F29;
+    border-radius: 50px;      
+    padding: 10px;
+    margin-bottom: 3%;
+    margin-left: 10%;            
+
+}
+
+.SetT-reservation-submit {
+    font-size: 20px;
+}
+
+  
