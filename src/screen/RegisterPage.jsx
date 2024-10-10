@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import './Style/registerpage.css';
 import { useNavigate } from 'react-router-dom';
 const Register = () => {
-    const navigate = useNavigate(); 
+    const navigate = useNavigate();
     const [name, setName] = useState("");
     const [phoneNumber, setPhoneNumber] = useState("");
     const [confirmPhoneNumber, setConfirmPhoneNumber] = useState("");
@@ -11,6 +11,7 @@ const Register = () => {
         e.preventDefault();
         if (phoneNumber === confirmPhoneNumber) {
             alert(`Welcome, ${name}!`);
+            navigate('/home');
         } else {
             alert("Phone numbers do not match.");
         }
@@ -20,32 +21,23 @@ const Register = () => {
     };
 
     return (
-        <header className="header">
+        <header className="regi-header">
             {/* Navigation Bar */}
-            <div className="headerContent">
+            {/* <div className="headerContent">
                 <div className="logoColumn">
                     <h1 className="logo">DPT Restaurant</h1>
-                </div>
-                <nav className="navColumn">
-                    <ul className="nav">
-                        <li className="navItem">
-                            <a href="#home" onClick={() => handleNavClick('/home')}>Home</a>
-                        </li>
-                        <li className="navItem">
-                            <a href="#about" onClick={() => handleNavClick('/home')}>About</a>
-                        </li>
-                        <li className="navItem">
-                            <a href="#menu" onClick={() => handleNavClick('/home')}>Recommended Menu</a>
-                        </li>
-                        <li className="navItem">
-                            <a href="#chef" onClick={() => handleNavClick('/home')}>Chef</a>
-                        </li>
-                        <li className="navItem">
-                            <a href="#booking" onClick={() => handleNavClick('/home')}>Table booking</a>
-                        </li>
+                </div> */}
+                <nav className="navbar-regi">
+                    <div className="logo-regi">DPT Restaurant</div>
+                    <ul className="navlink-regi">
+                        <li className="navItem"><a href="#firstpage" className='active' onClick={() => handleNavClick('/firstpage')}>Home</a></li>
+                        <li className="navItem"><a href="#about" onClick={() => handleNavClick('/about')}>About</a></li>
+                        <li className="navItem"><a href="#menu" onClick={() => handleNavClick('/menupage')}>Recommended Menu</a></li>
+                        <li className="navItem"><a href="#chef" onClick={() => handleNavClick('/chefpage')}>Chef</a></li>
+                        <li className="navItem"><a href="#booking" onClick={() => handleNavClick('/tablepage')}>Table Booking</a></li>
                     </ul>
                 </nav>
-            </div>
+            {/* </div> */}
             <div className="register-container">
                 <form className="register-form" onSubmit={handleSubmit}>
                     <h2>Register</h2>

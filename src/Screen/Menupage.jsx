@@ -1,21 +1,30 @@
 import React from 'react';
 import './Style/Menupage.css';
+import { useNavigate } from 'react-router-dom';
 
+function Menupage() {
+  const navigate = useNavigate();
 
-const Menupage = () => {
+  const handleNavClick = (path) => {
+    navigate(path); // Navigate to the given path
+  };
   return (
     <div className="menu-container">
-      <header className="menu-header">
-        <h1>DPT Restaurant</h1>
-        <nav className="menu-nav">
-          <a href="/">Home</a>
-          <a href="/about">About</a>
-          <a href="/recommended-menu" className="active">Recommended Menu</a>
-          <a href="/chef">Chef</a>
-          <a href="/table-booking">Table booking</a>
-        </nav>
-      </header>
-      
+      {/* <header className="menu-header"> */}
+
+      <nav className="menu-nav">
+        <div className="logo-menu">DPT Restaurant</div>
+        <ul className="navlink-menu">
+          <li className="navItem"><a href="#firstpage" onClick={() => handleNavClick('/firstpage')}>Home</a></li>
+          <li className="navItem"><a href="#about" onClick={() => handleNavClick('/about')}>About</a></li>
+          <li className="navItem"><a href="#menu" className="active" onClick={() => handleNavClick('/menupage')}>Recommended Menu</a></li>
+          <li className="navItem"><a href="#chef" onClick={() => handleNavClick('/chefpage')}>Chef</a></li>
+          <li className="navItem"><a href="#booking" onClick={() => handleNavClick('/tablepage')}>Table booking</a></li>
+        </ul>
+        <button className="menu-tag">Rujikorn Iimtrakul</button>
+      </nav>
+      {/* </header> */}
+
       <section className="menu-items">
         <div className="menu-item">
           <img src="5.jpg" alt="Spaghetti Carbonara" />

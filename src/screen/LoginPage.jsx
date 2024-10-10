@@ -21,33 +21,24 @@ function LoginPage() {
 
 
     return (
-        <header className="header">
+        <header className="login-header">
             {/* Navigation Bar */}
-            <div className="headerContent">
+            {/* <div className="headerContent">
                 <div className="logoColumn">
                     <h1 className="logo">DPT Restaurant</h1>
-                </div>
-                <nav className="navColumn">
-
-                    <ul className="nav">
-                        <li className="navItem">
-                            <a href="#home" onClick={() => handleNavClick('/home')}>Home</a>
-                        </li>
-                        <li className="navItem">
-                            <a href="#about" onClick={() => handleNavClick('/home')}>About</a>
-                        </li>
-                        <li className="navItem">
-                            <a href="#menu" onClick={() => handleNavClick('/home')}>Recommended Menu</a>
-                        </li>
-                        <li className="navItem">
-                            <a href="#chef" onClick={() => handleNavClick('/home')}>Chef</a>
-                        </li>
-                        <li className="navItem">
-                            <a href="#booking" onClick={() => handleNavClick('/home')}>Table booking</a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
+                </div> */}
+            <nav className="navbar-login">
+                <div className="nav-logo">DPT Restaurant</div>
+                <ul className="navlink-login">
+                    <li className="navItem"><a href="#firstpage" className='active' onClick={() => handleNavClick('/firstpage')}>Home</a></li>
+                    <li className="navItem"><a href="#about" onClick={() => handleNavClick('/about')}>About</a></li>
+                    <li className="navItem"><a href="#menu" onClick={() => handleNavClick('/menupage')}>Recommended Menu</a></li>
+                    <li className="navItem"><a href="#chef" onClick={() => handleNavClick('/chefpage')}>Chef</a></li>
+                    <li className="navItem"><a href="#booking" onClick={() => handleNavClick('/tablepage')}>Table Booking</a></li>
+                </ul>
+                {/* <button className="chef-tag">Rujikorn Iimtrakul</button> */}
+            </nav>
+            {/* </div> */}
 
             {/* Login Section */}
             <section
