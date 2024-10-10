@@ -1,5 +1,5 @@
 import React from 'react';
-import './Style/firstpage.css'; // Make sure to include your CSS file
+import './Style/Firstpage.css'; // Make sure to include your CSS file
 import { useNavigate } from 'react-router-dom';
 
 function FirstPage() {

@@ -3,7 +3,7 @@
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Menupage from './screen/Menupage';
-import FirstPage from'./screen/FirstPage';
+import Firstpage from './screen/Firstpage'
 import Login from './screen/LoginPage';
 import Register from './screen/RegisterPage';
 import Home from './screen/HomePage';
@@ -16,7 +16,7 @@ function App() {
     <BrowserRouter>
       <Routes>
 
-        <Route index element={<TableBooking/>}/>
+        <Route index element={<Firstpage/>}/>
         <Route path="login" element={<Login/>} />
         <Route path="register" element={<Register/>}/>
         <Route path="home" element={<Home/>}/>
@@ -24,6 +24,7 @@ function App() {
         <Route path="menupage" element={<Menupage/>}/>
         <Route path="tablepage" element={<TablePage/>}/>
         <Route path="chefpage" element={<Chefpage/>}/>
+        <Route path="tablebooking" element={<TableBooking/>}/>
 
       </Routes>
     </BrowserRouter>

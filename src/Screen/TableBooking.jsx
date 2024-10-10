@@ -1,12 +1,17 @@
 import React, { useState } from 'react';
+import { useLocation } from 'react-router-dom'; // ใช้สำหรับดึงข้อมูลโต๊ะจาก state
 import './Style/TableBooking.css';
 
 const TableBooking = () => {
+    const location = useLocation();
+    const { table } = location.state || {}; // ดึงข้อมูลโต๊ะที่เลือกจาก state
+
     const [form, setForm] = useState({
         name: 'Rujikorn Iimtrakul',
         day: '',
         time: '',
         phone: '093-232-2332',
+        table: table || 'No table selected' // เก็บข้อมูลโต๊ะที่เลือก
     });
 
     const handleChange = (e) => {
@@ -30,6 +35,16 @@ const TableBooking = () => {
                             type="text"
                             name="name"
                             value={form.name}
+                            onChange={handleChange}
+                            disabled
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label>Table</label>
+                        <input
+                            type="text"
+                            name="table"
+                            value={form.table}
                             onChange={handleChange}
                             disabled
                         />
