@@ -10,12 +10,14 @@ import Home from './screen/HomePage';
 import About from './screen/AboutPage';
 import TablePage from './screen/TablePage';
 import Chefpage from './screen/Chefpage';
+import TableBooking from './screen/TableBooking';
+
 function App() {
   return (
     <BrowserRouter>
       <Routes>
 
-        <Route index element={<FirstPage/>}/>
+        <Route index element={<TableBooking/>}/>
         <Route path="login" element={<Login/>} />
         <Route path="register" element={<Register/>}/>
         <Route path="home" element={<Home/>}/>
@@ -23,6 +25,8 @@ function App() {
         <Route path="menupage" element={<Menupage/>}/>
         <Route path="tablepage" element={<TablePage/>}/>
         <Route path="chefpage" element={<Chefpage/>}/>
+        <Route path="tablebooking" element={<TableBooking/>}/>
+    
 
       </Routes>
     </BrowserRouter>
