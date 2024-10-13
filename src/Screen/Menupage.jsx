@@ -15,7 +15,7 @@ function Menupage() {
       <nav className="menu-nav">
         <div className="logo-menu">DPT Restaurant</div>
         <ul className="navlink-menu">
-          <li className="navItem"><a href="#firstpage" onClick={() => handleNavClick('/firstpage')}>Home</a></li>
+          <li className="navItem"><a href="#home" onClick={() => handleNavClick('/home')}>Home</a></li>
           <li className="navItem"><a href="#about" onClick={() => handleNavClick('/about')}>About</a></li>
           <li className="navItem"><a href="#menu" className="active" onClick={() => handleNavClick('/menupage')}>Recommended Menu</a></li>
           <li className="navItem"><a href="#chef" onClick={() => handleNavClick('/chefpage')}>Chef</a></li>

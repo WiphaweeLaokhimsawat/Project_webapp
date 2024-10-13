@@ -17,7 +17,7 @@ function TablePage() {
             <nav className="navbarTable">
                 <div className="logo-table">DPT Restaurant</div>
                 <ul className="navLink-table">
-                    <li className="navItem"><a href="#firstpage" onClick={() => handleNavClick('/firstpage')}>Home</a></li>
+                    <li className="navItem"><a href="#home" onClick={() => handleNavClick('/home')}>Home</a></li>
                     <li className="navItem"><a href="#about" onClick={() => handleNavClick('/about')}>About</a></li>
                     <li className="navItem"><a href="#menu" onClick={() => handleNavClick('/menupage')}>Recommended Menu</a></li>
                     <li className="navItem"><a href="#chef" onClick={() => handleNavClick('/chefpage')}>Chef</a></li>

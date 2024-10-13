@@ -42,7 +42,7 @@ function Header() {
         {/* <h1 className="logo-chef">DPT Restaurant</h1> */}
         <ul className="navLinks-chef">
 
-          <li className="navItem"><a href="#firstpage" onClick={() => handleNavClick('/firstpage')}>Home</a></li>
+          <li className="navItem"><a href="#first" onClick={() => handleNavClick('/first')}>Home</a></li>
           <li className="navItem"><a href="#about" onClick={() => handleNavClick('/about')}>About</a></li>
           <li className="navItem"><a href="#menu" onClick={() => handleNavClick('/menupage')}>Recommended Menu</a></li>
           <li className="navItem"><a href="#chef" className='active' onClick={() => handleNavClick('/chefpage')}>Chef</a></li>

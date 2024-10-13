@@ -4,6 +4,9 @@ import { useNavigate } from 'react-router-dom';
 
 function TablePage() {
   const navigate = useNavigate();
+  const handleNavClick = (path) => {
+    navigate(path); // Navigate to the given path
+  };
 
   const handleTableClick = (table) => {
     // ส่งข้อมูลโต๊ะที่เลือกไปยังหน้า TableBooking พร้อมกับข้อมูล state
@@ -16,11 +19,11 @@ function TablePage() {
       <nav className="navbarTable">
         <div className="logo-table">DPT Restaurant</div>
         <ul className="navLink-table">
-          <li className="navItem"><a href="#firstpage" onClick={() => navigate('/firstpage')}>Home</a></li>
-          <li className="navItem"><a href="#about" onClick={() => navigate('/about')}>About</a></li>
-          <li className="navItem"><a href="#menu" onClick={() => navigate('/menupage')}>Recommended Menu</a></li>
-          <li className="navItem"><a href="#chef" onClick={() => navigate('/chefpage')}>Chef</a></li>
-          <li className="navItem"><a href="#settime" className="active" onClick={() => navigate('/settime')}>Table Booking</a></li>
+          <li className="navItem"><a href="#home" className='active' onClick={() => handleNavClick('/homepage')}>Home</a></li>
+          <li className="navItem"><a href="#about" onClick={() => handleNavClick('/about')}>About</a></li>
+          <li className="navItem"><a href="#menu" onClick={() => handleNavClick('/menupage')}>Recommended Menu</a></li>
+          <li className="navItem"><a href="#chef" onClick={() => handleNavClick('/chefpage')}>Chef</a></li>
+          <li className="navItem"><a href="#settime" className="active" onClick={() => handleNavClick('/settime')}>Table Booking</a></li>
         </ul>
         <button className="table-tag">Rujikorn Iimtrakul</button>
       </nav>
