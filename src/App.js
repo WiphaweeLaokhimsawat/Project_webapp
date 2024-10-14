@@ -2,15 +2,15 @@
 
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Menupage from './screen/Menupage';
-import Firstpage from './screen/Firstpage'
-import Login from './screen/LoginPage';
-import Register from './screen/RegisterPage';
-import Home from './screen/HomePage';
-import About from './screen/AboutPage';
-import TablePage from './screen/TablePage';
-import Chefpage from './screen/Chefpage';
-import TableBooking from './screen/TableBooking';
+import Menupage from './Screen/Menupage';
+import FirstPage from './Screen/Firstpage';
+import Login from './Screen/LoginPage';
+import Register from './Screen/RegisterPage';
+import Home from './Screen/HomePage';
+import About from './Screen/AboutPage';
+import TablePage from './Screen/TablePage';
+import Chefpage from './Screen/Chefpage';
+import TableBooking from './Screen/TableBooking';
 function App() {
   return (
     <BrowserRouter>
