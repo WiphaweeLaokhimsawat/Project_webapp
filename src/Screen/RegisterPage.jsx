@@ -27,16 +27,7 @@ const Register = () => {
             }else if (!phoneRegex.test(phoneNumber)) {
                 alert("Phone number should contain only numbers.");
             }
-        } else {
-            const newUser = {
-                name,
-                password,
-                confirmPassword,
-                phoneNumber
-            };
-    
-            // เพิ่มผู้ใช้ใหม่ลงใน usersData
-            addUser(newUser); 
+        } else { 
 
             alert(`Welcome, ${name}!`);
 

@@ -1,7 +1,7 @@
 import React, { useState,useEffect} from 'react';
 import './Style/loginpage.css'; // Ensure this file exists
 import { useNavigate } from 'react-router-dom';
-import { findUser } from './Database/usersData'; 
+// import { findUser } from './Database/usersData'; 
 function LoginPage() {
     const [name, setName] = useState('');
     const [password, setPassword] = useState('');
@@ -12,22 +12,22 @@ function LoginPage() {
     // const registeredName = location.state?.name;
     // const registeredPassword = location.state?.password;
 
-    useEffect(() => {
-        console.log(findUser);
-        // if (location.state) {
-        //     console.log('Received data from Register:', location.state);
-        // }
-    }, []);
-    const handleLogin = () => {
-        const user = findUser(name, password);  // ค้นหาผู้ใช้ใน localStorage
+    // useEffect(() => {
+    //     console.log(findUser);
+    //     // if (location.state) {
+    //     //     console.log('Received data from Register:', location.state);
+    //     // }
+    // }, []);
+    // const handleLogin = () => {
+    //     const user = findUser(name, password);  // ค้นหาผู้ใช้ใน localStorage
 
-        if (user) {
-            alert('Login successful!');
-            navigate('/home',{ state: { name } });  // นำผู้ใช้ไปยังหน้า home ถ้าข้อมูลถูกต้อง
-        } else {
-            alert('Incorrect username or password. Please try again.');
-        }
-    };
+    //     if (user) {
+    //         alert('Login successful!');
+    //         navigate('/home',{ state: { name } });  // นำผู้ใช้ไปยังหน้า home ถ้าข้อมูลถูกต้อง
+    //     } else {
+    //         alert('Incorrect username or password. Please try again.');
+    //     }
+    // };
     // const handleLogin = () => {
     //     if (name === registeredName && password === registeredPassword) {
     //         // alert('Login successful!');
@@ -38,6 +38,10 @@ function LoginPage() {
     //     }
         
     // };
+    const handleLogin = () => {
+        console.log('Logging in with', name, password);
+        
+    }
 
     const handleRegister = () => {
         console.log('Registering', name, password);
@@ -49,7 +53,7 @@ function LoginPage() {
 
 
     return (
-        <header className="login-header">
+        <div className="login-header">
             {/* Navigation Bar */}
             {/* <div className="headerContent">
                 <div className="logoColumn">
@@ -97,7 +101,7 @@ function LoginPage() {
                     </div>
                 </div>
             </section>
-        </header>
+        </div>
     );
 }
 

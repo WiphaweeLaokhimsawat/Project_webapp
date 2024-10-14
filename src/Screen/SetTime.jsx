@@ -12,6 +12,7 @@ function SetTime() {
         alert("คุณคลิกแล้ว!"); // หรือทำสิ่งอื่นตามที่ต้องการ
     };
     return (
+        
         <div className="SetT-Page">
             {/* Navbar */}
             <nav className="navbarTable">
