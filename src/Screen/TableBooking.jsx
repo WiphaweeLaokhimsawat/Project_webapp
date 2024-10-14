@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom'; // ใช้สำหรับดึงข้อมูลโต๊ะจาก state
-import './Style/TableBooking.css';
+import './Style/tablebooking.css';
 
 const TableBooking = () => {
     const location = useLocation();

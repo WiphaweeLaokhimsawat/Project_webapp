@@ -1,5 +1,5 @@
 import React from "react";
-import './Style/ChefPage.css'; // Import the combined CSS
+import './Style/chefpage.css'; // Import the combined CSS
 import { useNavigate } from 'react-router-dom';
 
 // Chef data

@@ -1,5 +1,5 @@
 import React from 'react';
-import './Style/TablePage.css';
+import './Style/tablepage.css';
 import { useNavigate } from 'react-router-dom';
 
 function TablePage() {

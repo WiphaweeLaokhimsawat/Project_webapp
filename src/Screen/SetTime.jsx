@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import './Style/registerpage.css';
-import './Style/SetTime.css';
+import './Style/settime.css';
 import { useNavigate } from 'react-router-dom';
 
 function TablePage() {
