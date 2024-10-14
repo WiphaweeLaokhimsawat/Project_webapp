@@ -3,7 +3,7 @@ import './Style/registerpage.css';
 import './Style/settime.css';
 import { useNavigate } from 'react-router-dom';
 
-function TablePage() {
+function SetTime() {
     const navigate = useNavigate();
     const handleNavClick = (path) => {
         navigate(path); // Navigate to the given path
@@ -58,4 +58,4 @@ function TablePage() {
     );
 }
 
-export default TablePage;
+export default SetTime;
