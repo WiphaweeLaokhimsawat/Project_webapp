@@ -54,17 +54,18 @@ const Register = () => {
         fetchPhones();
     }, []);  
 
-    // แสดงข้อความขณะโหลด
+    // // แสดงข้อความขณะโหลด
     if (loading) return <p>Loading...</p>;
     // แสดงข้อความหากมีข้อผิดพลาด
     if (error) return <p>{error}</p>;
+    // console.log(user);
+    // console.log(phones);
 
-    console.log(user);
-    console.log(phones);
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        
+        console.log(user);
+        console.log(phones);
         
         // if (user.includes(name) && phones.includes(phoneNumber)) {
         //     alert("ได้ลงทะเบียนไปแล้วด้วยชื่อและเบอร์นี้");
@@ -151,14 +152,14 @@ const Register = () => {
                         required
                     />
                     <input
-                        type="tel"
+                        type="number"
                         placeholder="Enter phone number"
                         value={phoneNumber}
-                        pattern="[0-9]*"
+                        pattern="[0-9]{10}"
                         onChange={(e) => setPhoneNumber(e.target.value)}
                         required
                     />
-                    <button type="submit">Register</button>
+                    <button type="submit" >Register</button>
                 </form>
             </div>
         </header>
