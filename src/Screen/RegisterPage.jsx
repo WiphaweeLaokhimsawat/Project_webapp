@@ -1,7 +1,11 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import './Style/registerpage.css';
 import { useNavigate } from 'react-router-dom';
 import Axios from "axios";
+
+
+
+
 
 const Register = () => {
     const navigate = useNavigate();
@@ -9,6 +13,37 @@ const Register = () => {
     const [password, setPassword] = useState("");
     const [phoneNumber, setPhoneNumber] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
+    
+    const [user, setNames] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState("");
+
+
+
+    useEffect(() => {
+        const fetchNames = async () => {
+            try {
+                const response = await Axios.get('http://localhost:5000/names');
+                // ดึงข้อมูลชื่อจาก results และสร้าง array ของชื่อ
+                const userNames = response.data.map(item => item.user); 
+                setNames(userNames);
+                setLoading(false);
+            } catch (error) {
+                console.error("Error fetching names:", error);
+                setError("Error fetching names.");
+                setLoading(false);
+            }
+        };
+
+        fetchNames();
+    }, []);  
+
+    // แสดงข้อความขณะโหลด
+    if (loading) return <p>Loading...</p>;
+    // แสดงข้อความหากมีข้อผิดพลาด
+    if (error) return <p>{error}</p>;
+
+    console.log(user);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -30,6 +65,7 @@ const Register = () => {
                 tel: phoneNumber,
                 role: "customer",  
             }).then((response) => {
+                
                 alert(`Welcome, ${name}!`);
                 
                 // Navigate ไปหน้า Login พร้อมกับส่งข้อมูลชื่อผู้ใช้ไปด้วย
