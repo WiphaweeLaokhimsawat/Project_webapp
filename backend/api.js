@@ -4,7 +4,7 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 
 const app = express();
-const port = 3307;
+const port = 5000;
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -15,7 +15,8 @@ const db = mysql.createConnection({
     host: 'ddc.dumri.in.th',
     user: 'myadmin01',
     password: 'Go6AM0Hnv8jqer65',
-    database: 'myadmin01'
+    database: 'myadmin01',
+    port:3306
   });
   
 
