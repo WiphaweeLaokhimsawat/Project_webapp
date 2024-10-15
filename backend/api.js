@@ -29,6 +29,17 @@ db.connect((err) => {
 });
 
 
+
+app.get('/api/user', function(req, res){
+  db.query("SELECT * FROM userdb_dtp", function(err, result, fields){
+    if(err) {
+      return res.status(400).send('Not found');
+    }
+    console.log(result);
+    res.send(result);
+  });
+})
+
 app.get("/names", (req, res) => {
   const query = "SELECT user FROM userdb_dtp"; 
   db.query(query, (err, results) => {
@@ -64,6 +75,24 @@ app.get("/phone", (req, res) => {
       }
     });
   });
+
+  app.post("/register", (req, res) => {
+  const { user, password, tel } = req.body;
+
+  if (!user ||  !password || !tel) {
+    return res.status(400).json({ error: "Please provide all required fields" });
+  }
+
+  // คำสั่ง SQL ในการแทรกข้อมูลผู้ใช้ใหม่ลงในฐานข้อมูล
+  const query = "INSERT INTO userdb_dtp (user, password, tel) VALUES (?, ?, ?)";
+  db.query(query, [user, password, tel], (err, results) => {
+    if (err) {
+      console.error("Error inserting data into MySQL:", err);
+      return res.status(500).json({ error: "Failed to register user" });
+    }
+    res.status(200).json({ message: "User registered successfully!" });
+  });
+});
 
 // เริ่มต้นเซิร์ฟเวอร์
 app.listen(port, () => {
