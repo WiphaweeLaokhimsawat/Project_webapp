@@ -15,6 +15,7 @@ const Register = () => {
     const [confirmPassword, setConfirmPassword] = useState("");
     
     const [user, setNames] = useState([]);
+    const [phones, setPhones] = useState([]); 
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState("");
 
@@ -28,14 +29,29 @@ const Register = () => {
                 const userNames = response.data.map(item => item.user); 
                 setNames(userNames);
                 setLoading(false);
+
             } catch (error) {
                 console.error("Error fetching names:", error);
                 setError("Error fetching names.");
                 setLoading(false);
             }
         };
+        const fetchPhones = async () => {
+            try {
+                const response = await Axios.get('http://localhost:5000/phone');
+                const phoneNumbers = response.data.map(item => item.tel);
+                setPhones(phoneNumbers);
+                // console.log("Phone numbers in database:", phoneNumbers); 
+                setLoading(false);  // แสดงหมายเลขโทรศัพท์ใน console
+            } catch (error) {
+                console.error("Error fetching phone numbers:", error);
+                setError("Error fetching phone numbers.");
+                setLoading(false);
+            }
+        };
 
         fetchNames();
+        fetchPhones();
     }, []);  
 
     // แสดงข้อความขณะโหลด
@@ -44,10 +60,21 @@ const Register = () => {
     if (error) return <p>{error}</p>;
 
     console.log(user);
+    console.log(phones);
 
     const handleSubmit = (e) => {
         e.preventDefault();
         
+        
+        // if (user.includes(name) && phones.includes(phoneNumber)) {
+        //     alert("ได้ลงทะเบียนไปแล้วด้วยชื่อและเบอร์นี้");
+        //     // เคลียร์ฟิลด์การกรอกข้อมูล
+        //     setName("");
+        //     setPhoneNumber("");
+        //     setPassword("");
+        //     setConfirmPassword("");
+        //     return;
+        // }
         const phoneRegex = /^\d+$/;
         if (!name || !password || !confirmPassword || !phoneNumber || password !== confirmPassword) {
             if (!name || !password || !confirmPassword || !phoneNumber) {
@@ -57,6 +84,10 @@ const Register = () => {
             } else if (!phoneRegex.test(phoneNumber)) {
                 alert("Phone number should contain only numbers.");
             }
+        } else if (user.includes(name)) { // เช็คว่าชื่อผู้ใช้ซ้ำหรือไม่
+            alert("ได้ลงทะเบียนไปแล้วด้วยชื่อนี้");
+        } else if (phones.includes(phoneNumber)) { // เช็คว่าหมายเลขโทรศัพท์ซ้ำหรือไม่
+            alert("ได้ลงทะเบียนไปแล้วด้วยเบอร์นี้");
         } else { 
 
             Axios.post('http://localhost:5000/register', {

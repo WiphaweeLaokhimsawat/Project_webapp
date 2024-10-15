@@ -54,7 +54,7 @@ app.get("/names", (req, res) => {
 });
 
 app.get("/phone", (req, res) => {
-    const query = "SELECT tel FROM timedb_dtp"; 
+    const query = "SELECT tel FROM userdb_dtp"; 
     db.query(query, (err, results) => {
       if (err) {
         console.error("Error executing query:", err);
