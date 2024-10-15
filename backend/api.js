@@ -1,3 +1,4 @@
+const bcrypt = require('bcrypt');
 const express = require("express");
 const mysql = require("mysql2");
 const bodyParser = require("body-parser");
@@ -85,16 +86,24 @@ app.get("/phone", (req, res) => {
       return res.status(400).json({ error: "Please provide all required fields" });
     }
   
-    // คำสั่ง SQL ในการแทรกข้อมูลผู้ใช้ใหม่ลงในฐานข้อมูล
-    const query = "INSERT INTO userdb_dtp (user, password, tel, role) VALUES (?, ?, ?, ?)";
-    
-    db.query(query, [user, password, tel, role], (err, results) => {
+    // Hash the password before storing it in the database
+    bcrypt.hash(password, 10, (err, hashedPassword) => {
       if (err) {
-        console.error("Error inserting data into MySQL:", err);
+        console.error("Error hashing password:", err);
         return res.status(500).json({ error: "Failed to register user" });
       }
-      
-      res.status(200).json({ message: "User registered successfully!" });
+  
+      // คำสั่ง SQL ในการแทรกข้อมูลผู้ใช้ใหม่ลงในฐานข้อมูล
+      const query = "INSERT INTO userdb_dtp (user, password, tel, role) VALUES (?, ?, ?, ?)";
+  
+      db.query(query, [user, hashedPassword, tel, role], (err, results) => {
+        if (err) {
+          console.error("Error inserting data into MySQL:", err);
+          return res.status(500).json({ error: "Failed to register user" });
+        }
+        
+        res.status(200).json({ message: "User registered successfully!" });
+      });
     });
   });
   
