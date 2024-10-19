@@ -7,70 +7,67 @@ import Axios from "axios";
 function LoginPage() {
     const [name, setName] = useState('');
     const [password, setPassword] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
     const navigate = useNavigate();
 
+    // const handleLogin = () => {
+    // console.log('Logging in with', name, password);
+    // navigate('/first');
+    // 
+
+    // Axios.get('http://localhost:5000/api/user')
+    //     .then((response) => {
+    //         const users = response.data;
+    //         console.log(users);
+    //         // ค้นหาผู้ใช้ที่ตรงกับชื่อที่กรอก
+    //         const user = users.find(u => u.user === name);
+    //         console.log(user);
+    //         if (user) {
+    //             console.log('Input Password:', password);
+    //             console.log('Hashed Password from DB:', user.password);
+    //             // เปรียบเทียบรหัสผ่านที่กรอกกับรหัสผ่านที่ถูก hash ในฐานข้อมูล
+    //             bcrypt.compare(password, user.password, (err, result) => {
+    //                 if (result) {
+    //                     // รหัสผ่านถูกต้อง ตรวจสอบ role
+    //                     if (user.role === 'customer') {
+    //                         navigate('/home');
+    //                     } else if (user.role === 'admin') {
+    //                         navigate('/first');
+    //                     }
+    //                 } else {
+    //                     // รหัสผ่านไม่ถูกต้อง
+    //                     alert('Incorrect password');
+    //                 }
+    //             });
+
+    //         } else {
+    //             // ถ้าไม่มีข้อมูลผู้ใช้ในฐานข้อมูล
+    //             console.log('User not found, redirecting to register page...');
+    //             alert("NO DATA");
+    //         }
+    //     })
+    //     .catch((error) => {
+    //         console.error('Error fetching user data:', error);
+    //     });
+    // }
     const handleLogin = () => {
-        // console.log('Logging in with', name, password);
-        // navigate('/first');
-        Axios.get('http://localhost:5000/api/user')
-        .then((response) => {
-            const users = response.data;
-
-            // ค้นหาผู้ใช้ที่ตรงกับชื่อและรหัสผ่านที่กรอก
-            const user = users.find(u => u.user === name && u.password === password);
-
-            if (user) {
-                // ถ้าพบผู้ใช้แล้ว ตรวจสอบ role
-                if (user.role === 'customer') {
-                    navigate('/home');
-                } else if (user.role === 'admin') {
-                    navigate('/first');
-                }
-            } else {
-                // ถ้าไม่มีข้อมูลผู้ใช้ นำทางไปยังหน้า Register
-                console.log('User not found, redirecting to register page...');
-                alert("NO DATA");
-                console.log(users);
-                // navigate('/register');
+        console.log("Sending username:", name);
+        console.log("Sending password:", password);
+        Axios.post('http://localhost:5000/login', {
+            user: name,
+            password: password,
+        }).then((response) => {
+            console.log("Response from server:", response.data);
+            if (response.data.role === 'customer') {
+                navigate('/home');
+            } else if (response.data.role === 'admin') {
+                navigate('/settime');
             }
-        })
-        .catch((error) => {
-            console.error('Error fetching user data:', error);
+        }).catch((error) => {
+            console.error('Error during login:', error);
+            alert("Login failed, please check your credentials.");
+            setErrorMessage('Login failed, please check your credentials.');  // แสดงข้อความ error
         });
-        // Axios.get('http://localhost:5000/api/user')
-        //     .then((response) => {
-        //         const users = response.data;
-        //         console.log(users);
-        //         // ค้นหาผู้ใช้ที่ตรงกับชื่อที่กรอก
-        //         const user = users.find(u => u.user === name);
-        //         console.log(user);
-        //         if (user) {
-        //             console.log('Input Password:', password);
-        //             console.log('Hashed Password from DB:', user.password);
-        //             // เปรียบเทียบรหัสผ่านที่กรอกกับรหัสผ่านที่ถูก hash ในฐานข้อมูล
-        //             bcrypt.compare(password, user.password, (err, result) => {
-        //                 if (result) {
-        //                     // รหัสผ่านถูกต้อง ตรวจสอบ role
-        //                     if (user.role === 'customer') {
-        //                         navigate('/home');
-        //                     } else if (user.role === 'admin') {
-        //                         navigate('/first');
-        //                     }
-        //                 } else {
-        //                     // รหัสผ่านไม่ถูกต้อง
-        //                     alert('Incorrect password');
-        //                 }
-        //             });
-
-        //         } else {
-        //             // ถ้าไม่มีข้อมูลผู้ใช้ในฐานข้อมูล
-        //             console.log('User not found, redirecting to register page...');
-        //             alert("NO DATA");
-        //         }
-        //     })
-        //     .catch((error) => {
-        //         console.error('Error fetching user data:', error);
-        //     });
     }
 
     const handleRegister = () => {
@@ -123,6 +120,7 @@ function LoginPage() {
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                     />
+                    {errorMessage && <p className="errorMessage">{errorMessage}</p>} {/* แสดงข้อความ error */}
                     <div className="buttonContainer">
                         <button className="loginButton" onClick={handleLogin}>
                             Login
