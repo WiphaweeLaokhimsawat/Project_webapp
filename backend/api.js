@@ -32,9 +32,9 @@ db.connect((err) => {
 
 
 
-app.get('/api/user', function(req, res){
-  db.query("SELECT * FROM userdb_dtp", function(err, result, fields){
-    if(err) {
+app.get('/api/user', function (req, res) {
+  db.query("SELECT * FROM userdb_dtp", function (err, result, fields) {
+    if (err) {
       return res.status(400).send('Not found');
     }
     console.log(result);
