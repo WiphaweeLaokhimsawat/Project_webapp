@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { useLocation } from 'react-router-dom'; // ใช้สำหรับดึงข้อมูลโต๊ะจาก state
+import { useLocation,useNavigate } from 'react-router-dom'; // ใช้สำหรับดึงข้อมูลโต๊ะจาก state
 import './Style/tablebooking.css';
 
 const TableBooking = () => {
     const location = useLocation();
     const { table } = location.state || {}; // ดึงข้อมูลโต๊ะที่เลือกจาก state
-
+    const navigate = useNavigate();
     const [form, setForm] = useState({
         name: 'Rujikorn Iimtrakul',
         day: '',
@@ -23,9 +23,25 @@ const TableBooking = () => {
         // handle form submission
         console.log(form);
     };
+    const handleNavClick = (path) => {
+        navigate(path); // Navigate to the given path
+      };
+  
 
     return (
         <div className="table-booking-container">
+            <nav className="navbarbooking">
+                <div className="logo-booking">DPT Restaurant</div>
+                <ul className="navLink-booking">
+                    <li className="navItem"><a href="#home" onClick={() => handleNavClick('/home')}>Home</a></li>
+                    <li className="navItem"><a href="#about" onClick={() => handleNavClick('/about')}>About</a></li>
+                    <li className="navItem"><a href="#menu" onClick={() => handleNavClick('/menupage')}>Recommended Menu</a></li>
+                    <li className="navItem"><a href="#chef" onClick={() => handleNavClick('/chefpage')}>Chef</a></li>
+                    <li className="navItem"><a href="#settime" className="active" onClick={() => handleNavClick('/settime')}>Table Booking</a></li>
+                </ul>
+                <button className="booking-tag">Rujikorn Iimtrakul</button>
+            </nav>
+
             <div className="table-booking-form">
                 <h2>Reserve a Table</h2>
                 <form onSubmit={handleSubmit}>

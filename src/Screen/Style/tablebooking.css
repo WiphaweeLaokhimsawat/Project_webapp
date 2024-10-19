@@ -15,7 +15,83 @@ body {
     background-position: center;
 }
 
+.navbarbooking {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 20px;
+    background-color: rgba(0, 0, 0, 0.7);
 
+    /* z-index: 1000; */
+}
+
+.logo-booking {
+    font-size: 1.8rem;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.navLink-booking {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    margin: 0 auto;
+}
+
+.navLink-booking li {
+    display: inline-block;
+}
+
+.navLinks-booking li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+}
+
+.navLink-booking li a:hover,
+.navLink-bookingli a:active {
+    color: #ffcc00;
+}
+
+.navItem a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 1.2rem;
+    transition: color 0.3s ease;
+}
+
+/* .navItem a:active {
+    color: #f39c12;
+  }
+  
+  .navItem a:hover {
+    color: #ffcc00;
+  } */
+
+/* .navLinks-table li a:hover,
+  .navLinks-table li a:active {
+    color: #ffcc00;
+     เปลี่ยนสีเมื่อ hover หรือ active */
+
+
+.booking-tag {
+    background-color: #ffa500;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.settime-tag:hover {
+    background-color: #D0671B;
+}
 .table-booking-form {
     background-color: black;
     padding: 30px;

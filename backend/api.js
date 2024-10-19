@@ -106,7 +106,39 @@ app.get("/phone", (req, res) => {
       });
     });
   });
-  
+//   app.post('/api/login', (req, res) => {
+//     const { user, password } = req.body;
+
+//     // ดึงข้อมูลผู้ใช้จากฐานข้อมูล
+//     const query = 'SELECT * FROM userdb_dtp WHERE user = ?';
+//     db.query(query, [user], (err, results) => {
+//         if (err) {
+//             console.error('Error querying database:', err);
+//             return res.status(500).json({ error: 'Database query failed' });
+//         }
+
+//         if (results.length === 0) {
+//             return res.status(404).json({ error: 'User not found' });
+//         }
+
+//         const userData = results[0];
+
+//         // เปรียบเทียบรหัสผ่านกับ hash ที่เก็บไว้
+//         bcrypt.compare(password, userData.password, (err, isMatch) => {
+//             if (err) {
+//                 console.error('Error comparing passwords:', err);
+//                 return res.status(500).json({ error: 'Error comparing passwords' });
+//             }
+
+//             if (!isMatch) {
+//                 return res.status(401).json({ error: 'Invalid password' });
+//             }
+
+//             // ถ้ารหัสผ่านถูกต้อง ให้ส่งข้อมูล role กลับไป
+//             res.status(200).json({ role: userData.role });
+//         });
+//     });
+// });
 
 // เริ่มต้นเซิร์ฟเวอร์
 app.listen(port, () => {

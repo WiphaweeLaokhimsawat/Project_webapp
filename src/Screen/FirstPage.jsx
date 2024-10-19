@@ -35,7 +35,7 @@ function FirstPage() {
                         <a href="#chef" onClick={() => handleNavClick('/chefpage')}>Chef</a>
                     </li>
                     <li className="navItem">
-                        <a href="#booking" onClick={() => handleNavClick('/tablepage')}>Table booking</a>
+                        <a href="#settime" onClick={() => handleNavClick('/settime')}>Table booking</a>
                     </li>
                 </ul>
             </nav>

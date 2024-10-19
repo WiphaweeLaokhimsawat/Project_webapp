@@ -46,7 +46,7 @@ function Header() {
           <li className="navItem"><a href="#about" onClick={() => handleNavClick('/about')}>About</a></li>
           <li className="navItem"><a href="#menu" onClick={() => handleNavClick('/menupage')}>Recommended Menu</a></li>
           <li className="navItem"><a href="#chef" className='active' onClick={() => handleNavClick('/chefpage')}>Chef</a></li>
-          <li className="navItem"><a href="#booking" onClick={() => handleNavClick('/tablepage')}>Table Booking</a></li>
+          <li className="navItem"><a href="#settime" onClick={() => handleNavClick('/settime')}>Table Booking</a></li>
         </ul>
         <button className="chef-tag">Rujikorn Iimtrakul</button>
       </nav>
