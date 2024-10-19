@@ -19,7 +19,7 @@ function Menupage() {
           <li className="navItem"><a href="#about" onClick={() => handleNavClick('/about')}>About</a></li>
           <li className="navItem"><a href="#menu" className="active" onClick={() => handleNavClick('/menupage')}>Recommended Menu</a></li>
           <li className="navItem"><a href="#chef" onClick={() => handleNavClick('/chefpage')}>Chef</a></li>
-          <li className="navItem"><a href="#booking" onClick={() => handleNavClick('/tablepage')}>Table booking</a></li>
+          <li className="navItem"><a href="#settime" onClick={() => handleNavClick('/settime')}>Table booking</a></li>
         </ul>
         <button className="menu-tag">Rujikorn Iimtrakul</button>
       </nav>

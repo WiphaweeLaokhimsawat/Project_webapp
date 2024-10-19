@@ -19,12 +19,12 @@ const DPTRestaurant = () => {
                     <li className="navItem"><a href="#about" className='active' onClick={() => handleNavClick('/about')}>About</a></li>
                     <li className="navItem"><a href="#menu" onClick={() => handleNavClick('/menupage')}>Recommended Menu</a></li>
                     <li className="navItem"><a href="#chef" onClick={() => handleNavClick('/chefpage')}>Chef</a></li>
-                    <li className="navItem"><a href="#booking"  onClick={() => handleNavClick('/tablepage')}>Table Booking</a></li>
+                    <li className="navItem"><a href="#settime"  onClick={() => handleNavClick('/settime')}>Table Booking</a></li>
                 </ul>
                 {/* <div className="chef-tag">
                     <span>Ruijkorn Imtrakun</span>
                 </div> */}
-                <button className="about-tag">Rujikorn Iimtrakul</button>
+                <button className="about-tag" onClick={() => handleNavClick('/account')}>Rujikorn Iimtrakul</button>
             </nav>
 
             <div className="dpt-content">
