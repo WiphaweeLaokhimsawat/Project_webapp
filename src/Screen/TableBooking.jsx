@@ -50,6 +50,9 @@ const TableBooking = () => {
           // นำทางกลับไปหน้า login
           navigate('/login');
       };
+      const handleSuccess =()=>{
+        alert("Success ")
+      }
   
     return (
         <div className="table-booking-container">
@@ -124,7 +127,7 @@ const TableBooking = () => {
                             onChange={handleChange}
                         />
                     </div>
-                    <button type="submit" className="submit-btn">
+                    <button type="submit" className="submit-btn" onClick={handleSuccess}>
                         Submit
                     </button>
                 </form>

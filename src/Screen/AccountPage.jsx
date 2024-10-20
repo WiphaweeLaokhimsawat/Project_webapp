@@ -8,19 +8,14 @@ function AccountPage() {
 
     
     useEffect(() => {
-        // ดึงข้อมูลผู้ใช้จาก localStorage
         const storedUser = JSON.parse(localStorage.getItem('user'));
-
         if (storedUser) {
-            setUserData({
-                name: storedUser.user,
-                phoneNumber: storedUser.tel,
-            });
+            setUserData(storedUser);
         } else {
-            // ถ้าไม่มีข้อมูลผู้ใช้ นำทางไปที่หน้า login
+            // ถ้าไม่มีข้อมูลผู้ใช้ใน localStorage นำทางไปที่หน้า login
             navigate('/login');
         }
-    }, []);
+    }, [navigate]);
     const [showLogout, setShowLogout] = useState(false);
 
     // ฟังก์ชันจัดการการคลิกเพื่อแสดงปุ่ม Logout

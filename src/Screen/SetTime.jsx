@@ -27,10 +27,11 @@ const SetTime = () => {
         e.preventDefault();
         // handle form submission
         console.log(form);
+        
     };
-    const handleAccount = () => {
+    const handleTable = () => {
         // console.log('Registering', name, password);
-        navigate('/account');
+        navigate('/tablepage');
     };
     
     const handleNavClick = (path) => {
@@ -123,7 +124,7 @@ const SetTime = () => {
                             onChange={handleChange}
                         />
                     </div>
-                    <button type="submit" className="submit-btn">
+                    <button type="submit" className="submit-btn" onClick={handleTable}>
                         Submit
                     </button>
                 </form>
