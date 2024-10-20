@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useEffect, useState } from 'react';
 import './Style/chefpage.css'; // Import the combined CSS
 import { useNavigate } from 'react-router-dom';
 
 // Chef data
+
 const chefData = [
   {
     image: "https://cdn.builder.io/api/v1/image/assets/TEMP/eb997ed42105761aa0ba0cf7c0ca78ef204234498e04ceb3a828e8bc281ee113?placeholderIfAbsent=true&apiKey=481b691d389644fcbe1d378101c13fd3",
@@ -17,7 +18,6 @@ const chefData = [
     description: "โนบุ มัตสึฮิซะ เชฟดังชาวญี่ปุ่น-เปรู เจ้าของร้านอาหารชื่อเดียวกับตัวเองมากกว่า 30 แห่งทั่วโลก"
   }
 ];
-
 // ChefCard Component
 function ChefCard({ image, description }) {
   return (
@@ -31,10 +31,35 @@ function ChefCard({ image, description }) {
 // Header Component with highlighted name
 function Header() {
   const navigate = useNavigate(); // Initialize the navigate hook
+  const [userData, setUserData] = useState({ user: '', tel: '', role: '' });
+  const [showLogout, setShowLogout] = useState(false);
 
+
+  useEffect(() => {
+    const storedUser = JSON.parse(localStorage.getItem('user'));
+    if (storedUser) {
+      setUserData(storedUser);
+    } else {
+      // ถ้าไม่มีข้อมูลผู้ใช้ใน localStorage นำทางไปที่หน้า login
+      // navigate('/login');
+    }
+  }, [navigate]);
+  // ฟังก์ชันจัดการการคลิกเพื่อแสดงปุ่ม Logout
+  const toggleLogout = () => {
+    setShowLogout(!showLogout);
+  };
+
+  // ฟังก์ชันจัดการ Logout
+  const handleLogout = () => {
+    // ลบข้อมูลผู้ใช้จาก localStorage
+    localStorage.removeItem('user');
+    // นำทางกลับไปหน้า login
+    navigate('/login');
+  };
   const handleNavClick = (path) => {
     navigate(path); // Navigate to the given path
   };
+
   return (
     <header className="header-chef">
       <nav className="navbar-chef">
@@ -48,7 +73,16 @@ function Header() {
           <li className="navItem"><a href="#chef" className='active' onClick={() => handleNavClick('/chefpage')}>Chef</a></li>
           <li className="navItem"><a href="#settime" onClick={() => handleNavClick('/settime')}>Table Booking</a></li>
         </ul>
-        <button className="chef-tag">Rujikorn Iimtrakul</button>
+        {/* <button className="home-tag">{userData.user}</button> */}
+        {/* แสดงชื่อผู้ใช้และปุ่ม Logout */}
+        <button className="home-tag" onClick={toggleLogout}>
+          {userData.user || "LOGIN"}
+        </button>
+        {showLogout && (
+          <button className="logout-button" onClick={handleLogout}>
+            Logout
+          </button>
+        )}
       </nav>
     </header>
   );
@@ -56,6 +90,7 @@ function Header() {
 
 // Main ChefPage Component
 function Chefpage() {
+
   return (
     <main className="chefPage-chef">
       <Header />

@@ -1,9 +1,11 @@
-import React from 'react';
+import React ,{useState,useEffect}from 'react';
 import './Style/tablepage.css';
 import { useNavigate } from 'react-router-dom';
 
 function TablePage() {
   const navigate = useNavigate();
+  const [userData, setUserData] = useState({ user: '', tel: '', role: '' });
+  const [showLogout, setShowLogout] = useState(false);
   const handleNavClick = (path) => {
     navigate(path); // Navigate to the given path
   };
@@ -12,7 +14,29 @@ function TablePage() {
     // ส่งข้อมูลโต๊ะที่เลือกไปยังหน้า TableBooking พร้อมกับข้อมูล state
     navigate('/tablebooking', { state: { table } });
   };
+  
 
+  // ฟังก์ชันจัดการการคลิกเพื่อแสดงปุ่ม Logout
+  const toggleLogout = () => {
+      setShowLogout(!showLogout);
+  };
+
+  // ฟังก์ชันจัดการ Logout
+  const handleLogout = () => {
+      // ลบข้อมูลผู้ใช้จาก localStorage
+      localStorage.removeItem('user');
+      // นำทางกลับไปหน้า login
+      navigate('/login');
+  };
+  useEffect(() => {
+    const storedUser = JSON.parse(localStorage.getItem('user'));
+    if (storedUser) {
+        setUserData(storedUser);
+    } else {
+        // ถ้าไม่มีข้อมูลผู้ใช้ใน localStorage นำทางไปที่หน้า login
+        navigate('/login');
+    }
+}, [navigate]);
   return (
     <div className="TablePage">
       {/* Navbar */}
@@ -25,7 +49,16 @@ function TablePage() {
           <li className="navItem"><a href="#chef" onClick={() => handleNavClick('/chefpage')}>Chef</a></li>
           <li className="navItem"><a href="#settime" className="active" onClick={() => handleNavClick('/settime')}>Table Booking</a></li>
         </ul>
-        <button className="table-tag">Rujikorn Iimtrakul</button>
+        {/* <button className="home-tag">{userData.user}</button> */}
+                     {/* แสดงชื่อผู้ใช้และปุ่ม Logout */}
+                     <button className="home-tag" onClick={toggleLogout}>
+                        {userData.user|| "LOGIN"}
+                    </button>
+                    {showLogout && (
+                        <button className="logout-button" onClick={handleLogout}>
+                            Logout
+                        </button>
+                    )}
       </nav>
 
       {/* Table Reservation Section */}

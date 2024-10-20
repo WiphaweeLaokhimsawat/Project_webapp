@@ -1,18 +1,23 @@
 import React, { useState,useEffect } from 'react';
-import { useNavigate } from 'react-router-dom'; // ใช้สำหรับดึงข้อมูลโต๊ะจาก state
+import { useNavigate,useLocation } from 'react-router-dom'; // ใช้สำหรับดึงข้อมูลโต๊ะจาก state
 import './Style/settime.css';
 
 const SetTime = () => {
     // const location = useLocation();
     // const { table } = location.state || {}; // ดึงข้อมูลโต๊ะที่เลือกจาก state
     const navigate = useNavigate();
-    const [userData, setUserData] = useState({ name: "", phoneNumber: "" });
+    // const location = useLocation();
+    // const { user, tel, role } = location.state || {};
+    const [userData, setUserData] = useState({ user: '', tel: '', role: '' });
+    //  const [userData, setUserData] = useState({ name: "", phoneNumber: "" });
     const [form, setForm] = useState({
         name: 'Rujikorn Iimtrakul',
         day: '',
         time: '',
         phone: '093-232-2332'
     });
+
+    
 
     const handleChange = (e) => {
         setForm({ ...form, [e.target.name]: e.target.value });
@@ -23,24 +28,38 @@ const SetTime = () => {
         // handle form submission
         console.log(form);
     };
+    const handleAccount = () => {
+        // console.log('Registering', name, password);
+        navigate('/account');
+    };
     
     const handleNavClick = (path) => {
       navigate(path); // Navigate to the given path
     };
+    
+    const [showLogout, setShowLogout] = useState(false);
     useEffect(() => {
-        // ดึงข้อมูลผู้ใช้จาก localStorage
         const storedUser = JSON.parse(localStorage.getItem('user'));
-
         if (storedUser) {
-            setUserData({
-                name: storedUser.user,
-                phoneNumber: storedUser.tel,
-            });
+            setUserData(storedUser);
         } else {
-            // ถ้าไม่มีข้อมูลผู้ใช้ นำทางไปที่หน้า login
+            // ถ้าไม่มีข้อมูลผู้ใช้ใน localStorage นำทางไปที่หน้า login
             navigate('/login');
         }
-    }, []);
+    }, [navigate]);
+    // ฟังก์ชันจัดการการคลิกเพื่อแสดงปุ่ม Logout
+    const toggleLogout = () => {
+        setShowLogout(!showLogout);
+    };
+
+    // ฟังก์ชันจัดการ Logout
+    const handleLogout = () => {
+        // ลบข้อมูลผู้ใช้จาก localStorage
+        localStorage.removeItem('user');
+        // นำทางกลับไปหน้า login
+        navigate('/login');
+    };
+
     return (
         <div className="settime-container">
             <nav className="navbarsettime">
@@ -52,7 +71,16 @@ const SetTime = () => {
                     <li className="navItem"><a href="#chef" onClick={() => handleNavClick('/chefpage')}>Chef</a></li>
                     <li className="navItem"><a href="#settime" className="active" onClick={() => handleNavClick('/settime')}>Table Booking</a></li>
                 </ul>
-                <button className="settime-tag">Rujikorn Iimtrakul</button>
+                 {/* <button className="home-tag">{userData.user}</button> */}
+                     {/* แสดงชื่อผู้ใช้และปุ่ม Logout */}
+                     <button className="home-tag" onClick={toggleLogout}>
+                        {userData.user|| "LOGIN"}
+                    </button>
+                    {showLogout && (
+                        <button className="logout-button" onClick={handleLogout}>
+                            Logout
+                        </button>
+                    )}
             </nav>
 
             <div className="settime-form">
@@ -63,7 +91,7 @@ const SetTime = () => {
                         <input
                             type="text"
                             name="name"
-                            value={form.name}
+                            value={userData.user}
                             onChange={handleChange}
                             disabled
                         />
@@ -91,7 +119,7 @@ const SetTime = () => {
                         <input
                             type="tel"
                             name="phone"
-                            value={form.phone}
+                            value={userData.tel}
                             onChange={handleChange}
                         />
                     </div>

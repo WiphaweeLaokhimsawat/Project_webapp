@@ -4,11 +4,9 @@ import { useNavigate } from 'react-router-dom';
 
 function AccountPage() {
     const navigate = useNavigate(); // Initialize the navigate hook
-    const [userData, setUserData] = useState({ name: "", phoneNumber: "" });
+    const [userData, setUserData] = useState({ user: '', tel: '', role: '' });
 
-    const handleNavClick = (path) => {
-        navigate(path); // Navigate to the given path
-    };
+    
     useEffect(() => {
         // ดึงข้อมูลผู้ใช้จาก localStorage
         const storedUser = JSON.parse(localStorage.getItem('user'));
@@ -23,6 +21,24 @@ function AccountPage() {
             navigate('/login');
         }
     }, []);
+    const [showLogout, setShowLogout] = useState(false);
+
+    // ฟังก์ชันจัดการการคลิกเพื่อแสดงปุ่ม Logout
+    const toggleLogout = () => {
+        setShowLogout(!showLogout);
+    };
+
+    // ฟังก์ชันจัดการ Logout
+    const handleLogout = () => {
+        // ลบข้อมูลผู้ใช้จาก localStorage
+        localStorage.removeItem('user');
+        // นำทางกลับไปหน้า login
+        navigate('/login');
+    };
+
+    const handleNavClick = (path) => {
+        navigate(path); // Navigate to the given path
+    };
     return (
         <div className='account-container'>
             <nav className='navbaraccount'>
@@ -35,12 +51,22 @@ function AccountPage() {
                     <li className="navItem"><a href="#chef" onClick={() => handleNavClick('/chefpage')}>Chef</a></li>
                     <li className="navItem"><a href="#settime" onClick={() => handleNavClick('/settime')}>Table Booking</a></li>
                 </ul>
-                <button className="account-tag">Rujikorn Iimtrakul</button>
+                 {/* <button className="home-tag">{userData.user}</button> */}
+                     {/* แสดงชื่อผู้ใช้และปุ่ม Logout */}
+                     <button className="home-tag" onClick={toggleLogout}>
+                        {userData.user|| "LOGIN"}
+                    </button>
+                    {showLogout && (
+                        <button className="logout-button" onClick={handleLogout}>
+                            Logout
+                        </button>
+                    )}
             </nav>
             <div className='box-show'>
                 <h2>Account</h2>
                 <div className='form-box'>
                     <label>Name</label>
+                    <label>DONU</label>
                 </div>
                 <div className='form-box'>
                     <label>Phone Number</label>

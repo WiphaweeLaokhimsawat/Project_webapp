@@ -122,6 +122,8 @@ app.post('/login', (req, res) => {
     }
 
     // const userData = results[0];
+    const user = results[0].user;
+    const tel = results[0].tel; 
     const storedHashedPassword = results[0].password;
     // เปรียบเทียบรหัสผ่านกับ hash ที่เก็บไว้
     bcrypt.compare(password, storedHashedPassword, (err, isMatch) => {
@@ -131,9 +133,13 @@ app.post('/login', (req, res) => {
       }
 
       if (!isMatch) {
-        res.status(200).json({ message: 'Login successful', role: results[0].role });
+        res.status(200).json({ 
+          message: 'Login successful',
+          user: user, 
+          role: results[0].role,
+          tel: tel
+        });
       } else
-
         // ถ้ารหัสผ่านถูกต้อง ให้ส่งข้อมูล role กลับไป
         res.status(401).json({ message: 'Unauthorized' });
     });

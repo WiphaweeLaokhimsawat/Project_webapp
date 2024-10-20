@@ -57,10 +57,13 @@ function LoginPage() {
             user: name,
             password: password,
         }).then((response) => {
+            const { user,role, tel } = response.data;
+            localStorage.setItem('user', JSON.stringify({ user, tel, role }));
             console.log("Response from server:", response.data);
-            if (response.data.role === 'customer') {
-                navigate('/home');
-            } else if (response.data.role === 'admin') {
+            if (role === 'customer') {
+                navigate('/home'
+                );
+            } else if (role === 'admin') {
                 navigate('/settime');
             }
         }).catch((error) => {
@@ -77,10 +80,6 @@ function LoginPage() {
     const handleNavClick = (path) => {
         navigate(path); // Navigate to the given path
     };
-    useEffect(() => {
-
-    })
-
     return (
         <div className="login-header">
             {/* Navigation Bar */}

@@ -1,12 +1,36 @@
-import React from 'react';
+import React, { useEffect, useState } from "react";
 import './Style/menupage.css';
 import { useNavigate } from 'react-router-dom';
 
 function Menupage() {
   const navigate = useNavigate();
-
+  const [userData, setUserData] = useState({ user: '', tel: '', role: '' });
   const handleNavClick = (path) => {
     navigate(path); // Navigate to the given path
+  };
+  useEffect(() => {
+    const storedUser = JSON.parse(localStorage.getItem('user'));
+    if (storedUser) {
+      setUserData(storedUser);
+    } else {
+      // ถ้าไม่มีข้อมูลผู้ใช้ใน localStorage นำทางไปที่หน้า login
+      // navigate('/login');
+    }
+  }, [navigate]);
+  // State สำหรับควบคุมการแสดงปุ่ม Logout
+  const [showLogout, setShowLogout] = useState(false);
+
+  // ฟังก์ชันจัดการการคลิกเพื่อแสดงปุ่ม Logout
+  const toggleLogout = () => {
+    setShowLogout(!showLogout);
+  };
+
+  // ฟังก์ชันจัดการ Logout
+  const handleLogout = () => {
+    // ลบข้อมูลผู้ใช้จาก localStorage
+    localStorage.removeItem('user');
+    // นำทางกลับไปหน้า login
+    navigate('/login');
   };
   return (
     <div className="menu-container">
@@ -19,9 +43,18 @@ function Menupage() {
           <li className="navItem"><a href="#about" onClick={() => handleNavClick('/about')}>About</a></li>
           <li className="navItem"><a href="#menu" className="active" onClick={() => handleNavClick('/menupage')}>Recommended Menu</a></li>
           <li className="navItem"><a href="#chef" onClick={() => handleNavClick('/chefpage')}>Chef</a></li>
-          <li className="navItem"><a href="#settime" onClick={() => handleNavClick('/settime')}>Table booking</a></li>
+          <li className="navItem"><a href="#settime" onClick={() => handleNavClick('/settime')}>Table Booking</a></li>
         </ul>
-        <button className="menu-tag">Rujikorn Iimtrakul</button>
+        {/* <button className="home-tag">{userData.user}</button> */}
+        {/* แสดงชื่อผู้ใช้และปุ่ม Logout */}
+        <button className="home-tag" onClick={toggleLogout}>
+          {userData.user || "LOGIN"}
+        </button>
+        {showLogout && (
+          <button className="logout-button" onClick={handleLogout}>
+            Logout
+          </button>
+        )}
       </nav>
       {/* </header> */}
 
