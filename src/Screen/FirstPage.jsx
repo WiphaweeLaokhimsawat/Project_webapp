@@ -13,7 +13,7 @@ function FirstPage() {
         navigate(path); // Navigate to the given path
     };
     return (
-        <div className="header">
+        <div className="header-first">
             {/* Navigation Bar */}
             {/* <div className="headerContent"> */}
             {/* <div className="logoColumn">
@@ -43,11 +43,11 @@ function FirstPage() {
 
             {/* Hero Section */}
             <section
-                className="heroSection"
+                className="heroSection-first"
             >
                 <div className="overlay"></div>
-                <div className="heroContent">
-                    <h2 className="welcomeText">Welcome to</h2>
+                <div className="heroContent-first">
+                    <h2 className="welcomeTex-first">Welcome to</h2>
                     <p className="restaurantName">DPT Restaurant</p>
                     <button className="loginButton" onClick={handleLoginClick}>
                         LOGIN

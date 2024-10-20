@@ -1,11 +1,12 @@
-import React ,{useState,useEffect}from 'react';
+import React, { useState, useEffect } from 'react';
 import './Style/tablepage.css';
 import { useNavigate } from 'react-router-dom';
 
 function TablePage() {
   const navigate = useNavigate();
   const [userData, setUserData] = useState({ user: '', tel: '', role: '' });
-  const [showLogout, setShowLogout] = useState(false);
+  const [showDropdown, setShowDropdown] = useState(false);
+
   const handleNavClick = (path) => {
     navigate(path); // Navigate to the given path
   };
@@ -14,29 +15,41 @@ function TablePage() {
     // ส่งข้อมูลโต๊ะที่เลือกไปยังหน้า TableBooking พร้อมกับข้อมูล state
     navigate('/tablebooking', { state: { table } });
   };
-  
 
   // ฟังก์ชันจัดการการคลิกเพื่อแสดงปุ่ม Logout
-  const toggleLogout = () => {
-      setShowLogout(!showLogout);
+  const toggleDropdown = () => {
+    if (userData.user) {
+      // ถ้ามีข้อมูลผู้ใช้ให้แสดง dropdown
+      setShowDropdown(!showDropdown);
+    } else {
+      // ถ้าไม่มีข้อมูลผู้ใช้ให้ไปหน้า login
+      navigate('/login');
+    }
   };
+  const goToAccount = () => {
+    navigate('/account');
+  };
+  const goToBookingHistory = () => {
+    navigate('/detailbooking');
+  };
+
 
   // ฟังก์ชันจัดการ Logout
   const handleLogout = () => {
-      // ลบข้อมูลผู้ใช้จาก localStorage
-      localStorage.removeItem('user');
-      // นำทางกลับไปหน้า login
-      navigate('/login');
+    // ลบข้อมูลผู้ใช้จาก localStorage
+    localStorage.removeItem('user');
+    // นำทางกลับไปหน้า login
+    navigate('/first');
   };
   useEffect(() => {
     const storedUser = JSON.parse(localStorage.getItem('user'));
     if (storedUser) {
-        setUserData(storedUser);
+      setUserData(storedUser);
     } else {
-        // ถ้าไม่มีข้อมูลผู้ใช้ใน localStorage นำทางไปที่หน้า login
-        navigate('/login');
+      // ถ้าไม่มีข้อมูลผู้ใช้ใน localStorage นำทางไปที่หน้า login
+      navigate('/first');
     }
-}, [navigate]);
+  }, [navigate]);
   return (
     <div className="TablePage">
       {/* Navbar */}
@@ -50,15 +63,22 @@ function TablePage() {
           <li className="navItem"><a href="#settime" className="active" onClick={() => handleNavClick('/settime')}>Table Booking</a></li>
         </ul>
         {/* <button className="home-tag">{userData.user}</button> */}
-                     {/* แสดงชื่อผู้ใช้และปุ่ม Logout */}
-                     <button className="home-tag" onClick={toggleLogout}>
-                        {userData.user|| "LOGIN"}
-                    </button>
-                    {showLogout && (
-                        <button className="logout-button" onClick={handleLogout}>
-                            Logout
-                        </button>
-                    )}
+        {/* แสดงชื่อผู้ใช้และปุ่ม Logout */}
+        <div className="dropdown-table">
+          <button className="table-tag" onClick={toggleDropdown}>
+            {userData.user || "LOGIN"}
+          </button>
+
+          {showDropdown && (
+            <div className="dropdowntable-menu">
+              <ul>
+                <li onClick={goToAccount}>Account</li>
+                <li onClick={goToBookingHistory}>Booking History</li>
+                <li onClick={handleLogout}>Logout</li>
+              </ul>
+            </div>
+          )}
+        </div>
       </nav>
 
       {/* Table Reservation Section */}

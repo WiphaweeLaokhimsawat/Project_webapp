@@ -1,11 +1,12 @@
-import React ,{useState,useEffect}from 'react';
-import { useLocation,useNavigate } from 'react-router-dom'; // ใช้สำหรับดึงข้อมูลโต๊ะจาก state
+import React, { useState, useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom'; // ใช้สำหรับดึงข้อมูลโต๊ะจาก state
 import './Style/tablebooking.css';
 
 const TableBooking = () => {
     const location = useLocation();
     const { table } = location.state || {}; // ดึงข้อมูลโต๊ะที่เลือกจาก state
     const navigate = useNavigate();
+    const [showDropdown, setShowDropdown] = useState(false);
     const [userData, setUserData] = useState({ user: '', tel: '', role: '' });
     const [form, setForm] = useState({
         name: 'Rujikorn Iimtrakul',
@@ -26,34 +27,44 @@ const TableBooking = () => {
     };
     const handleNavClick = (path) => {
         navigate(path); // Navigate to the given path
-      };
-      useEffect(() => {
+    };
+    useEffect(() => {
         const storedUser = JSON.parse(localStorage.getItem('user'));
         if (storedUser) {
             setUserData(storedUser);
         } else {
             // ถ้าไม่มีข้อมูลผู้ใช้ใน localStorage นำทางไปที่หน้า login
-            navigate('/login');
+            navigate('/first');
         }
     }, [navigate]);
-      const [showLogout, setShowLogout] = useState(false);
+    // ฟังก์ชันจัดการการคลิกเพื่อแสดงปุ่ม Logout
+    const toggleDropdown = () => {
+        if (userData.user) {
+            // ถ้ามีข้อมูลผู้ใช้ให้แสดง dropdown
+            setShowDropdown(!showDropdown);
+        } else {
+            // ถ้าไม่มีข้อมูลผู้ใช้ให้ไปหน้า login
+            navigate('/login');
+        }
+    };
+    const goToAccount = () => {
+        navigate('/account');
+    };
+    const goToBookingHistory = () => {
+        navigate('/detailbooking');
+    };
+    // ฟังก์ชันจัดการ Logout
+    const handleLogout = () => {
+        // ลบข้อมูลผู้ใช้จาก localStorage
+        localStorage.removeItem('user');
+        // นำทางกลับไปหน้า login
+        navigate('/first');
+    };
+    const handleSuccess = () => {
+        alert("Success ");
+        navigate('/detailbooking');
+    }
 
-      // ฟังก์ชันจัดการการคลิกเพื่อแสดงปุ่ม Logout
-      const toggleLogout = () => {
-          setShowLogout(!showLogout);
-      };
-  
-      // ฟังก์ชันจัดการ Logout
-      const handleLogout = () => {
-          // ลบข้อมูลผู้ใช้จาก localStorage
-          localStorage.removeItem('user');
-          // นำทางกลับไปหน้า login
-          navigate('/login');
-      };
-      const handleSuccess =()=>{
-        alert("Success ")
-      }
-  
     return (
         <div className="table-booking-container">
             <nav className="navbarbooking">
@@ -65,16 +76,23 @@ const TableBooking = () => {
                     <li className="navItem"><a href="#chef" onClick={() => handleNavClick('/chefpage')}>Chef</a></li>
                     <li className="navItem"><a href="#settime" className="active" onClick={() => handleNavClick('/settime')}>Table Booking</a></li>
                 </ul>
-                 {/* <button className="home-tag">{userData.user}</button> */}
-                     {/* แสดงชื่อผู้ใช้และปุ่ม Logout */}
-                     <button className="home-tag" onClick={toggleLogout}>
-                        {userData.user|| "LOGIN"}
+                {/* <button className="home-tag">{userData.user}</button> */}
+                {/* แสดงชื่อผู้ใช้และปุ่ม Logout */}
+                <div className="dropdown-booking">
+                    <button className="booking-tag" onClick={toggleDropdown}>
+                        {userData.user || "LOGIN"}
                     </button>
-                    {showLogout && (
-                        <button className="logout-button" onClick={handleLogout}>
-                            Logout
-                        </button>
+
+                    {showDropdown && (
+                        <div className="dropdownbooking-menu">
+                            <ul>
+                                <li onClick={goToAccount}>Account</li>
+                                <li onClick={goToBookingHistory}>Booking History</li>
+                                <li onClick={handleLogout}>Logout</li>
+                            </ul>
+                        </div>
                     )}
+                </div>
             </nav>
 
             <div className="table-booking-form">

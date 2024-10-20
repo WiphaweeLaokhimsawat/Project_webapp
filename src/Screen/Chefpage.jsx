@@ -32,7 +32,8 @@ function ChefCard({ image, description }) {
 function Header() {
   const navigate = useNavigate(); // Initialize the navigate hook
   const [userData, setUserData] = useState({ user: '', tel: '', role: '' });
-  const [showLogout, setShowLogout] = useState(false);
+
+  const [showDropdown, setShowDropdown] = useState(false);
 
 
   useEffect(() => {
@@ -44,17 +45,21 @@ function Header() {
       // navigate('/login');
     }
   }, [navigate]);
-  // ฟังก์ชันจัดการการคลิกเพื่อแสดงปุ่ม Logout
-  const toggleLogout = () => {
-    setShowLogout(!showLogout);
+  const toggleDropdown = () => {
+    setShowDropdown(!showDropdown);
   };
-
+  const goToAccount = () => {
+    navigate('/account');
+  };
+  const goToBookingHistory = () => {
+    navigate('/detailbooking');
+  };
   // ฟังก์ชันจัดการ Logout
   const handleLogout = () => {
     // ลบข้อมูลผู้ใช้จาก localStorage
     localStorage.removeItem('user');
     // นำทางกลับไปหน้า login
-    navigate('/login');
+    navigate('/first');
   };
   const handleNavClick = (path) => {
     navigate(path); // Navigate to the given path
@@ -75,19 +80,26 @@ function Header() {
         </ul>
         {/* <button className="home-tag">{userData.user}</button> */}
         {/* แสดงชื่อผู้ใช้และปุ่ม Logout */}
-        <button className="home-tag" onClick={toggleLogout}>
-          {userData.user || "LOGIN"}
-        </button>
-        {showLogout && (
-          <button className="logout-button" onClick={handleLogout}>
-            Logout
+        <div className="dropdown-chef">
+          <button className="chef-tag" onClick={toggleDropdown}>
+            {userData.user || "LOGIN"}
           </button>
-        )}
+
+          {showDropdown && (
+            <div className="dropdownchef-menu">
+              <ul>
+                <li onClick={goToAccount}>Account</li>
+                <li onClick={goToBookingHistory}>Booking History</li>
+                <li onClick={handleLogout}>Logout</li>
+              </ul>
+            </div>
+          )}
+        </div>
       </nav>
     </header>
   );
 }
-
+ 
 // Main ChefPage Component
 function Chefpage() {
 

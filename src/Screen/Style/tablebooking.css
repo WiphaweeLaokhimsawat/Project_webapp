@@ -89,7 +89,7 @@ body {
     font-size: 14px;
 }
 
-.settime-tag:hover {
+.booking-tag:hover {
     background-color: #D0671B;
 }
 .table-booking-form {
@@ -156,4 +156,36 @@ body {
 
 input:disabled {
     background-color: #222;
+}
+.dropdown-booking {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdownbooking-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: #333;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    z-index: 1000;
+    width: 200px;
+}
+
+.dropdownbooking-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.dropdownbooking-menu li {
+    padding: 10px;
+    cursor: pointer;
+    color: #fff;
+}
+
+.dropdownbooking-menu li:hover {
+    background-color: #555;
 }

@@ -104,4 +104,31 @@
     line-height: 1.5;
     margin-bottom: 30px;
   }
-  
+  .dropdown-about{
+    position: relative;
+    display: inline-block;
+  }
+  .dropdownabout-menu{
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: #333;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    z-index: 1000;
+    width: 200px;
+  }
+  .dropdownabout-menu ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .dropdownabout-menu li{
+    padding: 10px;
+    cursor: pointer;
+    color: #fff;
+  }
+  .dropdownabout-menu li:hover{
+    background-color: #555;
+  }

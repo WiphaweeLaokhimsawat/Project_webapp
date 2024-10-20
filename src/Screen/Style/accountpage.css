@@ -95,7 +95,7 @@ body {
 }
 
 
-.box-show{
+.box-show {
     background-color: black;
     border: 2px solid red;
     padding: 30px;
@@ -105,16 +105,19 @@ body {
     max-width: 400px;
     width: 100%;
 }
-h2{
+
+h2 {
     text-align: start;
     font-size: 1.8em;
 }
-.form-box{
-    background-color:red;
+
+.form-box {
+    background-color: red;
     margin-top: 10px;
     font-size: 1.2em;
 }
-.button-history{
+
+.button-history {
     background-color: #ff7b1c;
     color: white;
     padding: 10px 20px;
@@ -127,4 +130,35 @@ h2{
     margin-top: 40px;
 }
 
+.dropdown-account {
+    position: relative;
+    display: inline-block;
+}
 
+.dropdownaccount-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: #333;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    z-index: 1000;
+    width: 200px;
+}
+
+.dropdownaccount-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.dropdownaccount-menu li {
+    padding: 10px;
+    cursor: pointer;
+    color: #fff;
+}
+
+.dropdownaccount-menu li:hover {
+    background-color: #555;
+}

@@ -17,12 +17,22 @@ function Menupage() {
       // navigate('/login');
     }
   }, [navigate]);
-  // State สำหรับควบคุมการแสดงปุ่ม Logout
-  const [showLogout, setShowLogout] = useState(false);
-
+  const [showDropdown, setShowDropdown] = useState(false);
   // ฟังก์ชันจัดการการคลิกเพื่อแสดงปุ่ม Logout
-  const toggleLogout = () => {
-    setShowLogout(!showLogout);
+  const toggleDropdown = () => {
+    if (userData.user) {
+      // ถ้ามีข้อมูลผู้ใช้ให้แสดง dropdown
+      setShowDropdown(!showDropdown);
+    } else {
+      // ถ้าไม่มีข้อมูลผู้ใช้ให้ไปหน้า login
+      navigate('/login');
+    }
+  };
+  const goToAccount = () => {
+    navigate('/account');
+  };
+  const goToBookingHistory = () => {
+    navigate('/detailbooking');
   };
 
   // ฟังก์ชันจัดการ Logout
@@ -30,7 +40,7 @@ function Menupage() {
     // ลบข้อมูลผู้ใช้จาก localStorage
     localStorage.removeItem('user');
     // นำทางกลับไปหน้า login
-    navigate('/login');
+    navigate('/first');
   };
   return (
     <div className="menu-container">
@@ -47,14 +57,21 @@ function Menupage() {
         </ul>
         {/* <button className="home-tag">{userData.user}</button> */}
         {/* แสดงชื่อผู้ใช้และปุ่ม Logout */}
-        <button className="home-tag" onClick={toggleLogout}>
-          {userData.user || "LOGIN"}
-        </button>
-        {showLogout && (
-          <button className="logout-button" onClick={handleLogout}>
-            Logout
+        <div className="dropdown-menu">
+          <button className="menu-tag" onClick={toggleDropdown}>
+            {userData.user || "LOGIN"}
           </button>
-        )}
+
+          {showDropdown && (
+            <div className="dropdownmenu-menu">
+              <ul>
+                <li onClick={goToAccount}>Account</li>
+                <li onClick={goToBookingHistory}>Booking History</li>
+                <li onClick={handleLogout}>Logout</li>
+              </ul>
+            </div>
+          )}
+        </div>
       </nav>
       {/* </header> */}
 

@@ -5,22 +5,32 @@ import { useNavigate } from 'react-router-dom';
 function AccountPage() {
     const navigate = useNavigate(); // Initialize the navigate hook
     const [userData, setUserData] = useState({ user: '', tel: '', role: '' });
+    const [showDropdown, setShowDropdown] = useState(false);
 
-    
     useEffect(() => {
         const storedUser = JSON.parse(localStorage.getItem('user'));
         if (storedUser) {
             setUserData(storedUser);
         } else {
             // ถ้าไม่มีข้อมูลผู้ใช้ใน localStorage นำทางไปที่หน้า login
-            navigate('/login');
+            navigate('/first');
         }
     }, [navigate]);
-    const [showLogout, setShowLogout] = useState(false);
 
-    // ฟังก์ชันจัดการการคลิกเพื่อแสดงปุ่ม Logout
-    const toggleLogout = () => {
-        setShowLogout(!showLogout);
+    const toggleDropdown = () => {
+        if (userData.user) {
+            // ถ้ามีข้อมูลผู้ใช้ให้แสดง dropdown
+            setShowDropdown(!showDropdown);
+        } else {
+            // ถ้าไม่มีข้อมูลผู้ใช้ให้ไปหน้า login
+            navigate('/login');
+        }
+    };
+    const goToAccount = () => {
+        navigate('/account');
+    };
+    const goToBookingHistory = () => {
+        navigate('/detailbooking');
     };
 
     // ฟังก์ชันจัดการ Logout
@@ -28,7 +38,7 @@ function AccountPage() {
         // ลบข้อมูลผู้ใช้จาก localStorage
         localStorage.removeItem('user');
         // นำทางกลับไปหน้า login
-        navigate('/login');
+        navigate('/first');
     };
 
     const handleNavClick = (path) => {
@@ -41,30 +51,38 @@ function AccountPage() {
 
                 <ul className="navLink-account">
                     <li className="navItem"><a href="#home" onClick={() => handleNavClick('/home')}>Home</a></li>
-                    <li className="navItem"><a href="#about" className='active' onClick={() => handleNavClick('/about')}>About</a></li>
+                    <li className="navItem"><a href="#about" onClick={() => handleNavClick('/about')}>About</a></li>
                     <li className="navItem"><a href="#menu" onClick={() => handleNavClick('/menupage')}>Recommended Menu</a></li>
                     <li className="navItem"><a href="#chef" onClick={() => handleNavClick('/chefpage')}>Chef</a></li>
                     <li className="navItem"><a href="#settime" onClick={() => handleNavClick('/settime')}>Table Booking</a></li>
                 </ul>
-                 {/* <button className="home-tag">{userData.user}</button> */}
-                     {/* แสดงชื่อผู้ใช้และปุ่ม Logout */}
-                     <button className="home-tag" onClick={toggleLogout}>
-                        {userData.user|| "LOGIN"}
+                {/* <button className="home-tag">{userData.user}</button> */}
+                {/* แสดงชื่อผู้ใช้และปุ่ม Logout */}
+                <div className="dropdown-account">
+                    <button className="account-tag" onClick={toggleDropdown}>
+                        {userData.user || "LOGIN"}
                     </button>
-                    {showLogout && (
-                        <button className="logout-button" onClick={handleLogout}>
-                            Logout
-                        </button>
+
+                    {showDropdown && (
+                        <div className="dropdownaccount-menu">
+                            <ul>
+                                <li onClick={goToAccount}>Account</li>
+                                <li onClick={goToBookingHistory}>Booking History</li>
+                                <li onClick={handleLogout}>Logout</li>
+                            </ul>
+                        </div>
                     )}
+                </div>
             </nav>
             <div className='box-show'>
                 <h2>Account</h2>
                 <div className='form-box'>
                     <label>Name</label>
-                    <label>DONU</label>
+                    <label>{userData.user}</label>
                 </div>
                 <div className='form-box'>
                     <label>Phone Number</label>
+                    <label>{userData.tel}</label>
                 </div>
                 <button className='button-history'>Booking History</button>
 

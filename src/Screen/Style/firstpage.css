@@ -18,7 +18,7 @@ body {
 
 
 /* Header Styles */
-.header {
+.header-first {
   width: 100%;
   height: 100vh;
   display: flex;
@@ -35,7 +35,7 @@ body {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
+  width: 100%; 
   height: 115%;
   background: rgba(0, 0, 0, 0.6);
   z-index: 1;
@@ -43,7 +43,7 @@ body {
 }
 
 /* Navigation Bar */
-.headerContent {
+/* .headerContent {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -51,8 +51,8 @@ body {
   position: relative;
   z-index: 2;
   background-color: rgba(0, 0, 0, 0.8);
-  /* Semi-transparent background */
-}
+  Semi-transparent background 
+} */
 
 
 
@@ -113,24 +113,26 @@ body {
   }
    */
 /* Hero Section */
-.heroSection {
+.heroSection-first {
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 103%;
   height: 80%;
   position: relative;
-  z-index: 2;
+  margin-top: -45px;
+  /* z-index: 2; */
   color: white;
   background-size: cover;
   background-position: center;
 }
 
-.heroContent {
+.heroContent-first {
   text-align: center;
   z-index: 3;
 }
 
-.welcomeText {
+.welcomeText-first {
   font-size: 48px;
   margin-bottom: 10px;
 }

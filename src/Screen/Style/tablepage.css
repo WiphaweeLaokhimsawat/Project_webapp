@@ -177,3 +177,36 @@ body {
     /* ลดขนาดปุ่ม VIP ในหน้าจอเล็ก */
   }
 }
+
+.dropdown-table {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdowntable-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: #333;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  z-index: 1000;
+  width: 200px;
+}
+
+.dropdowntable-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.dropdowntable-menu li {
+  padding: 10px;
+  cursor: pointer;
+  color: #fff;
+}
+
+.dropdowntable-menu li:hover {
+  background-color: #555;
+}

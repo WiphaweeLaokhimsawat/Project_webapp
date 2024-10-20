@@ -172,3 +172,36 @@ body {
   font-size: 18px;
   font-weight: bold;
 }
+
+.dropdown-detail {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdownmenu-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: #333;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  z-index: 1000;
+  width: 200px;
+}
+
+.dropdownmenu-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.dropdownmenu-menu li {
+  padding: 10px;
+  cursor: pointer;
+  color: #fff;
+}
+
+.dropdownmenu-menu li:hover {
+  background-color: #555;
+}
