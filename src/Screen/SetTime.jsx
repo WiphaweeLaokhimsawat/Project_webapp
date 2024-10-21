@@ -13,7 +13,8 @@ const SetTime = () => {
     //  const [userData, setUserData] = useState({ name: "", phoneNumber: "" });
     const [form, setForm] = useState({
         day: '',
-        time: ''
+        time: '',
+        time_end: ''
     });
     const handleChange = (e) => {
         setForm({ ...form, [e.target.name]: e.target.value });
@@ -30,11 +31,20 @@ const SetTime = () => {
             alert('กรุณาใส่วันกับเวลาให้ครบ')
         }
 
-        else{
-
-            navigate('/tablepage', { state: { day: form.day, time: form.time } });
+        else {
+            const [hours, minutes] = form.time.split(":").map(Number);
+            const additionalHours = 2; // จำนวนชั่วโมงที่จะบวก
+    
+            // บวกชั่วโมง
+            const totalHours = hours + additionalHours; 
+            const newHours = totalHours % 24; // ใช้ % 24 เพื่อป้องกันการเกิน 24 ชั่วโมง
+    
+            console.log(typeof form.day, typeof form.time, newHours, minutes);
+            navigate('/tablepage', { state: { day: form.day, time: form.time ,time_end:`${newHours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}` } });
         }
     };
+    
+
 
     const handleNavClick = (path) => {
         navigate(path); // Navigate to the given path

@@ -6,7 +6,7 @@ function TablePage() {
   const navigate = useNavigate();
   const [userData, setUserData] = useState({ user: '', tel: '', role: '' });
   const location = useLocation();
-  const { day, time } = location.state || {};
+  const { day, time,time_end } = location.state || {};
   const [showDropdown, setShowDropdown] = useState(false);
 
   const handleNavClick = (path) => {
@@ -15,8 +15,8 @@ function TablePage() {
 
   const handleTableClick = (table) => {
     // ส่งข้อมูลโต๊ะที่เลือกไปยังหน้า TableBooking พร้อมกับข้อมูล state
-    console.log(table ,day ,time);
-    navigate('/tablebooking', { state: { table ,day ,time} });
+    console.log(table ,day ,time,time_end);
+    navigate('/tablebooking', { state: { table ,day ,time,time_end} });
   };
 
   // ฟังก์ชันจัดการการคลิกเพื่อแสดงปุ่ม Logout

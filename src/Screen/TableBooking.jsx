@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom'; // ใช้สำหรับดึงข้อมูลโต๊ะจาก state
 import './Style/tablebooking.css';
+import Axios from 'axios';
 
 const TableBooking = () => {
     const location = useLocation();
-    const { table ,day ,time  } = location.state || {}; // ดึงข้อมูลโต๊ะที่เลือกจาก state
+    const { table ,day ,time , time_end } = location.state || {}; // ดึงข้อมูลโต๊ะที่เลือกจาก state
     
     const navigate = useNavigate();
     const [showDropdown, setShowDropdown] = useState(false);
@@ -12,7 +13,8 @@ const TableBooking = () => {
     const [form, setForm] = useState({
         day: day ,
         time: time  ,
-        table: table 
+        table: table ,
+        time_end: time_end
     });
 
     const handleChange = (e) => {
@@ -60,8 +62,24 @@ const TableBooking = () => {
         navigate('/first');
     };
     const handleSuccess = () => {
-        alert("Success ");
-        navigate('/detailbooking');
+
+        Axios.post('http://localhost:5000/tablebooking', {
+            table_no : form.table,
+            user: userData.user,
+            tel: userData.tel,
+            day: form.day, 
+            time_in: form.time, 
+            time_out: form.time_end
+     
+        }).then((response) => {
+            alert("Success ");
+            navigate('/detailbooking');
+            
+        }).catch((error) => {
+            console.error("Error registering user:", error);
+            alert("Error registering user.");
+        });
+        
 
 
     }

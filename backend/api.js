@@ -106,6 +106,8 @@ app.post("/register", (req, res) => {
     });
   });
 });
+
+
 app.post('/login', (req, res) => {
   const { user, password } = req.body;
 
@@ -145,6 +147,23 @@ app.post('/login', (req, res) => {
     });
   });
 });
+
+app.post("/tablebooking", (req, res) => {
+  const { table_no,  user, tel, day ,time_in ,time_out } = req.body;
+
+
+    // คำสั่ง SQL ในการแทรกข้อมูลผู้ใช้ใหม่ลงในฐานข้อมูล
+    const query = "INSERT INTO timedb_dtp (table_no , user , tel , day , time_in , time_out) VALUES (?, ?, ?, ?,?,?)";
+
+    db.query(query, [table_no, user, tel, day, time_in, time_out], (err, results) => {
+      if (err) {
+        console.error("Error inserting data into MySQL:", err);
+        return res.status(500).json({ error: "Failed to book table" });
+      }
+  
+      res.status(200).json({ message: "Table booked successfully!" });
+    });
+  });
 
 // เริ่มต้นเซิร์ฟเวอร์
 app.listen(port, () => {
