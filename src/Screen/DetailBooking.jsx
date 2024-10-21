@@ -71,7 +71,7 @@ function DetailBooking() {
     };
 
 
-
+ 
     return (
         <div className="detail-container">
             {/* <header className="menu-header"> */}
