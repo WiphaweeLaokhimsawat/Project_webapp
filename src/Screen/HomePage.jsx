@@ -93,7 +93,7 @@ function HomePage() {
                 <div className="heroContent-home">
                     <h2 className="welcomeText-home">Welcome to</h2>
                     <p className="restaurantName">DPT Restaurant</p>
-                    <button className="booking-button" onClick={() => handleNavClick('/tablepage')}>
+                    <button className="booking-button" onClick={() => handleNavClick('/settime')}>
                         Booking
                         {/* <span className="srOnly">Access your account</span> */}
                     </button>

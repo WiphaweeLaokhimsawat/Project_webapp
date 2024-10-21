@@ -110,7 +110,7 @@ app.post('/login', (req, res) => {
   const { user, password } = req.body;
 
   // ดึงข้อมูลผู้ใช้จากฐานข้อมูล
-  const query = 'SELECT * FROM userdb_dtp WHERE user = ?';
+  const query = 'SELECT * FROM userdb_dtp WHERE BINARY user = ?';
   db.query(query, [user], (err, results) => {
     if (err) {
       console.error('Error querying database:', err);

@@ -9,10 +9,8 @@ const TableBooking = () => {
     const [showDropdown, setShowDropdown] = useState(false);
     const [userData, setUserData] = useState({ user: '', tel: '', role: '' });
     const [form, setForm] = useState({
-        name: 'Rujikorn Iimtrakul',
         day: '',
         time: '',
-        phone: '093-232-2332',
         table: table || 'No table selected' // เก็บข้อมูลโต๊ะที่เลือก
     });
 
@@ -63,7 +61,12 @@ const TableBooking = () => {
     const handleSuccess = () => {
         alert("Success ");
         navigate('/detailbooking');
+
+        
     }
+
+
+
 
     return (
         <div className="table-booking-container">
@@ -103,7 +106,7 @@ const TableBooking = () => {
                         <input
                             type="text"
                             name="name"
-                            value={form.name}
+                            value={userData.user}
                             onChange={handleChange}
                             disabled
                         />
@@ -141,7 +144,7 @@ const TableBooking = () => {
                         <input
                             type="tel"
                             name="phone"
-                            value={form.phone}
+                            value={userData.tel}
                             onChange={handleChange}
                         />
                     </div>
