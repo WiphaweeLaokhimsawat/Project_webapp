@@ -33,6 +33,7 @@ function AccountPage() {
         navigate('/detailbooking');
     };
 
+
     // ฟังก์ชันจัดการ Logout
     const handleLogout = () => {
         // ลบข้อมูลผู้ใช้จาก localStorage
@@ -84,7 +85,7 @@ function AccountPage() {
                     <label>Phone Number</label>
                     <label>{userData.tel}</label>
                 </div>
-                <button className='button-history'>Booking History</button>
+                <button className='button-history' onClick={goToBookingHistory}>Booking History</button>
 
             </div>
         </div >

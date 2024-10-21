@@ -5,9 +5,9 @@ import Axios from 'axios';
 
 function DetailBooking() {
     const navigate = useNavigate();
-    const location = useLocation();
-    const { table, day, time, time_end, name, phone } = location.state || {}; // ดึงข้อมูลโต๊ะที่เลือกจาก state
     const [userData, setUserData] = useState({ user: '', tel: '', role: '' });
+    // const [names, setNames] = useState("");
+
     const [bookings, setBookings] = useState([]);//เก็บค่าข้อมูลในdbตาม name
     const [showDropdown, setShowDropdown] = useState(false);
     const handleNavClick = (path) => {
@@ -22,7 +22,7 @@ function DetailBooking() {
             // ถ้าไม่มีข้อมูลผู้ใช้ใน localStorage นำทางไปที่หน้า login
             navigate('/first');
         }
-        Axios.get(`http://localhost:5000/api/bookings/${name}`)
+        Axios.get(`http://localhost:5000/api/bookings/${userData.user}`)
             .then(response => {
                 setBookings(response.data);//เก็บค่าข้อมูลในdbตาม name
             })
@@ -33,7 +33,7 @@ function DetailBooking() {
                     console.log("Error fetching booking data:", error);
                 }
             });
-    }, [navigate, name]);
+    }, [navigate, userData.user]);
 
     function handleCancelBooking(id) {
         Axios.delete(`http://localhost:5000/api/delbookings/${id}`)
@@ -71,7 +71,7 @@ function DetailBooking() {
     };
 
 
- 
+
     return (
         <div className="detail-container">
             {/* <header className="menu-header"> */}
