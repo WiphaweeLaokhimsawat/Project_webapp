@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import './Style/tablepage.css';
-import { useNavigate } from 'react-router-dom';
+import { useLocation,useNavigate } from 'react-router-dom';
 
 function TablePage() {
   const navigate = useNavigate();
   const [userData, setUserData] = useState({ user: '', tel: '', role: '' });
+  const location = useLocation();
+  const { day, time } = location.state || {};
   const [showDropdown, setShowDropdown] = useState(false);
 
   const handleNavClick = (path) => {
@@ -13,7 +15,8 @@ function TablePage() {
 
   const handleTableClick = (table) => {
     // ส่งข้อมูลโต๊ะที่เลือกไปยังหน้า TableBooking พร้อมกับข้อมูล state
-    navigate('/tablebooking', { state: { table } });
+    console.log(table ,day ,time);
+    navigate('/tablebooking', { state: { table ,day ,time} });
   };
 
   // ฟังก์ชันจัดการการคลิกเพื่อแสดงปุ่ม Logout

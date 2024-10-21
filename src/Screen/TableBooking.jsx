@@ -4,14 +4,15 @@ import './Style/tablebooking.css';
 
 const TableBooking = () => {
     const location = useLocation();
-    const { table } = location.state || {}; // ดึงข้อมูลโต๊ะที่เลือกจาก state
+    const { table ,day ,time  } = location.state || {}; // ดึงข้อมูลโต๊ะที่เลือกจาก state
+    
     const navigate = useNavigate();
     const [showDropdown, setShowDropdown] = useState(false);
     const [userData, setUserData] = useState({ user: '', tel: '', role: '' });
     const [form, setForm] = useState({
-        day: '',
-        time: '',
-        table: table || 'No table selected' // เก็บข้อมูลโต๊ะที่เลือก
+        day: day ,
+        time: time  ,
+        table: table 
     });
 
     const handleChange = (e) => {
@@ -62,7 +63,7 @@ const TableBooking = () => {
         alert("Success ");
         navigate('/detailbooking');
 
-        
+
     }
 
 

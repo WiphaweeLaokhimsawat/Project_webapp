@@ -12,10 +12,8 @@ const SetTime = () => {
     const [userData, setUserData] = useState({ user: '', tel: '', role: '' });
     //  const [userData, setUserData] = useState({ name: "", phoneNumber: "" });
     const [form, setForm] = useState({
-        name: 'Rujikorn Iimtrakul',
         day: '',
-        time: '',
-        phone: '093-232-2332'
+        time: ''
     });
     const handleChange = (e) => {
         setForm({ ...form, [e.target.name]: e.target.value });
@@ -28,8 +26,14 @@ const SetTime = () => {
 
     };
     const handleTable = () => {
-        // console.log('Registering', name, password);
-        navigate('/tablepage');
+        if (form.day === '' || form.time === ''){
+            alert('กรุณาใส่วันกับเวลาให้ครบ')
+        }
+
+        else{
+
+            navigate('/tablepage', { state: { day: form.day, time: form.time } });
+        }
     };
 
     const handleNavClick = (path) => {

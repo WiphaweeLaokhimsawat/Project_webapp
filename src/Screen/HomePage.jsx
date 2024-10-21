@@ -57,7 +57,7 @@ function HomePage() {
             <nav className="navbar-home">
                 <div className="logo-home">DPT Restaurant</div>
                 <ul className="navlink-home">
-                    <li className="navItem"><a href="#home" className='active' onClick={() => handleNavClick('/homepage')}>Home</a></li>
+                    <li className="navItem"><a href="#home" className='active' onClick={() => handleNavClick('/home')}>Home</a></li>
                     <li className="navItem"><a href="#about" onClick={() => handleNavClick('/about')}>About</a></li>
                     <li className="navItem"><a href="#menu" onClick={() => handleNavClick('/menupage')}>Recommended Menu</a></li>
                     <li className="navItem"><a href="#chef" onClick={() => handleNavClick('/chefpage')}>Chef</a></li>
